@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Prevent Tailwind's preflight from breaking Leaflet tiles and controls */
+.leaflet-container img {
+  max-width: none;
+}
