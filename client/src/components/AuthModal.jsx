@@ -8,10 +8,10 @@ import {
 import { useLang } from "../LangContext";
 import { T } from "../i18n";
 
-export default function AuthModal({ onClose }) {
+export default function AuthModal({ onClose, initialMode = "signin" }) {
   const { lang } = useLang();
   const t = T[lang];
-  const [mode, setMode] = useState("signin");
+  const [mode, setMode] = useState(initialMode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

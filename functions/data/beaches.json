@@ -1,0 +1,1367 @@
+[
+  {
+    "name": "Repulse Bay",
+    "region": "HK Island",
+    "lat": 22.236,
+    "lng": 114.197,
+    "orientation": 180,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "淺水灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Middle Bay",
+    "region": "HK Island",
+    "lat": 22.228,
+    "lng": 114.193,
+    "orientation": 180,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.3,
+    "gazetted": true,
+    "nameTc": "中灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "South Bay",
+    "region": "HK Island",
+    "lat": 22.22,
+    "lng": 114.188,
+    "orientation": 195,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "南灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Deep Water Bay",
+    "region": "HK Island",
+    "lat": 22.249,
+    "lng": 114.181,
+    "orientation": 175,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.7,
+    "gazetted": true,
+    "nameTc": "深水灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Shek O",
+    "region": "HK Island",
+    "lat": 22.233,
+    "lng": 114.254,
+    "orientation": 135,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.9,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "石澳泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Big Wave Bay",
+    "region": "HK Island",
+    "lat": 22.245,
+    "lng": 114.261,
+    "orientation": 90,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 1,
+    "bayFactor": 0,
+    "gazetted": true,
+    "nameTc": "大浪灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Rocky Bay",
+    "region": "HK Island",
+    "lat": 22.237,
+    "lng": 114.258,
+    "orientation": 110,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.75,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "石澳後灘泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Turtle Cove",
+    "region": "HK Island",
+    "lat": 22.225,
+    "lng": 114.25,
+    "orientation": 80,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "龜背灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Stanley Main Beach",
+    "region": "HK Island",
+    "lat": 22.218,
+    "lng": 114.211,
+    "orientation": 150,
+    "nearestStations": [
+      "Stanley"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "赤柱正灘泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "St. Stephen's Beach",
+    "region": "HK Island",
+    "lat": 22.212,
+    "lng": 114.22,
+    "orientation": 120,
+    "nearestStations": [
+      "Stanley"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "聖士提反灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Chung Hom Kok Beach",
+    "region": "HK Island",
+    "lat": 22.222,
+    "lng": 114.205,
+    "orientation": 175,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.55,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "舂坎角泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Tai Tam Beach",
+    "region": "HK Island",
+    "lat": 22.232,
+    "lng": 114.238,
+    "orientation": 100,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.55,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "大潭篤",
+    "isBeach": true
+  },
+  {
+    "name": "Hairpin Beach",
+    "region": "HK Island",
+    "lat": 22.226,
+    "lng": 114.208,
+    "orientation": 175,
+    "nearestStations": [
+      "Stanley",
+      "Wong Chuk Hang"
+    ],
+    "exposure": 0.55,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "夏萍灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Pui O",
+    "region": "Lantau",
+    "lat": 22.239,
+    "lng": 113.983,
+    "orientation": 180,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.8,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "貝澳泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Cheung Sha Upper Beach",
+    "region": "Lantau",
+    "lat": 22.238,
+    "lng": 113.966,
+    "orientation": 180,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.9,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "上長沙泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Cheung Sha Lower Beach",
+    "region": "Lantau",
+    "lat": 22.24,
+    "lng": 113.956,
+    "orientation": 185,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.85,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "下長沙泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Tong Fuk Beach",
+    "region": "Lantau",
+    "lat": 22.235,
+    "lng": 113.949,
+    "orientation": 185,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.75,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "塘福泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Yi Long Wan Beach",
+    "region": "Lantau",
+    "lat": 22.236,
+    "lng": 113.943,
+    "orientation": 185,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.15,
+    "gazetted": false,
+    "nameTc": "二浪灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Nim Shue Wan",
+    "region": "Lantau",
+    "lat": 22.282,
+    "lng": 114.004,
+    "orientation": 70,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "稔樹灣",
+    "isBeach": true
+  },
+  {
+    "name": "Mui Wo Beach",
+    "region": "Lantau",
+    "lat": 22.264,
+    "lng": 113.998,
+    "orientation": 85,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Cheung Chau"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.5,
+    "gazetted": false,
+    "nameTc": "梅窩泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Discovery Bay Tai Pak Beach",
+    "region": "Lantau",
+    "lat": 22.302,
+    "lng": 114.022,
+    "orientation": 180,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.7,
+    "gazetted": false,
+    "nameTc": "愉景灣大白沙灘",
+    "isBeach": true
+  },
+  {
+    "name": "Chi Ma Wan",
+    "region": "Lantau",
+    "lat": 22.254,
+    "lng": 113.957,
+    "orientation": 280,
+    "nearestStations": [
+      "Cheung Chau",
+      "Chek Lap Kok"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "芝麻灣",
+    "isBeach": true
+  },
+  {
+    "name": "Shui Hau Wan",
+    "region": "Lantau",
+    "lat": 22.229,
+    "lng": 113.934,
+    "orientation": 185,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "大嶼山水口灣",
+    "isBeach": true
+  },
+  {
+    "name": "Fan Lau Beach",
+    "region": "Lantau",
+    "lat": 22.204,
+    "lng": 113.826,
+    "orientation": 225,
+    "nearestStations": [
+      "Cheung Chau",
+      "Chek Lap Kok"
+    ],
+    "exposure": 0.8,
+    "bayFactor": 0.05,
+    "gazetted": false,
+    "nameTc": "大嶼山分流",
+    "isBeach": true
+  },
+  {
+    "name": "Hung Shing Yeh Beach",
+    "region": "Lamma",
+    "lat": 22.215,
+    "lng": 114.121,
+    "orientation": 295,
+    "nearestStations": [
+      "Lamma Island",
+      "Cheung Chau"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "洪聖爺灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Lo So Shing Beach",
+    "region": "Lamma",
+    "lat": 22.203,
+    "lng": 114.112,
+    "orientation": 255,
+    "nearestStations": [
+      "Lamma Island",
+      "Cheung Chau"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "蘆鬚城泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Sok Kwu Wan",
+    "region": "Lamma",
+    "lat": 22.199,
+    "lng": 114.128,
+    "orientation": 110,
+    "nearestStations": [
+      "Lamma Island"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "南丫島索罟灣",
+    "isBeach": true
+  },
+  {
+    "name": "Sham Wan",
+    "region": "Lamma",
+    "lat": 22.182,
+    "lng": 114.113,
+    "orientation": 180,
+    "nearestStations": [
+      "Lamma Island"
+    ],
+    "exposure": 0.75,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "南丫島深灣",
+    "isBeach": true
+  },
+  {
+    "name": "Power Station Beach",
+    "region": "Lamma",
+    "lat": 22.221,
+    "lng": 114.139,
+    "orientation": 60,
+    "nearestStations": [
+      "Lamma Island"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "電廠泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Tung Wan Beach",
+    "region": "Cheung Chau",
+    "lat": 22.21,
+    "lng": 114.031,
+    "orientation": 85,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.3,
+    "gazetted": true,
+    "nameTc": "長洲東灣",
+    "isBeach": true
+  },
+  {
+    "name": "Kwun Yam Wan Beach",
+    "region": "Cheung Chau",
+    "lat": 22.207,
+    "lng": 114.021,
+    "orientation": 265,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.55,
+    "bayFactor": 0.35,
+    "gazetted": true,
+    "nameTc": "觀音灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Italian Beach",
+    "region": "Cheung Chau",
+    "lat": 22.212,
+    "lng": 114.024,
+    "orientation": 260,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "意大利泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Afternoon Beach",
+    "region": "Cheung Chau",
+    "lat": 22.204,
+    "lng": 114.023,
+    "orientation": 255,
+    "nearestStations": [
+      "Cheung Chau Beach",
+      "Cheung Chau"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "下午灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Trio Beach",
+    "region": "Sai Kung",
+    "lat": 22.373,
+    "lng": 114.268,
+    "orientation": 195,
+    "nearestStations": [
+      "Sai Kung"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "三星灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Tai Long Wan",
+    "region": "Sai Kung",
+    "lat": 22.388,
+    "lng": 114.381,
+    "orientation": 90,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 1,
+    "bayFactor": 0,
+    "gazetted": false,
+    "nameTc": "大嶼山大浪灣",
+    "isBeach": true
+  },
+  {
+    "name": "Clear Water Bay First Beach",
+    "region": "Sai Kung",
+    "lat": 22.28,
+    "lng": 114.3,
+    "orientation": 135,
+    "nearestStations": [
+      "Tseung Kwan O",
+      "Sai Kung"
+    ],
+    "exposure": 0.8,
+    "bayFactor": 0.25,
+    "gazetted": true,
+    "nameTc": "清水灣第一灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Clear Water Bay Second Beach",
+    "region": "Sai Kung",
+    "lat": 22.275,
+    "lng": 114.307,
+    "orientation": 145,
+    "nearestStations": [
+      "Tseung Kwan O",
+      "Sai Kung"
+    ],
+    "exposure": 0.75,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "清水灣第二灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Silverstrand Beach",
+    "region": "Sai Kung",
+    "lat": 22.315,
+    "lng": 114.28,
+    "orientation": 150,
+    "nearestStations": [
+      "Tseung Kwan O",
+      "Sai Kung"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.35,
+    "gazetted": true,
+    "nameTc": "銀線灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Hap Mun Bay Beach",
+    "region": "Sai Kung",
+    "lat": 22.341,
+    "lng": 114.275,
+    "orientation": 240,
+    "nearestStations": [
+      "Sai Kung"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "廈門灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Kiu Tsui Beach",
+    "region": "Sai Kung",
+    "lat": 22.354,
+    "lng": 114.284,
+    "orientation": 90,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.8,
+    "bayFactor": 0.3,
+    "gazetted": true,
+    "nameTc": "橋咀泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Sai Wan Beach",
+    "region": "Sai Kung",
+    "lat": 22.368,
+    "lng": 114.349,
+    "orientation": 120,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.85,
+    "bayFactor": 0.05,
+    "gazetted": false,
+    "nameTc": "西灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Long Ke Wan",
+    "region": "Sai Kung",
+    "lat": 22.373,
+    "lng": 114.39,
+    "orientation": 85,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.95,
+    "bayFactor": 0.05,
+    "gazetted": false,
+    "nameTc": "浪茄灣",
+    "isBeach": true
+  },
+  {
+    "name": "Pak Sha Wan (Hebe Haven)",
+    "region": "Sai Kung",
+    "lat": 22.368,
+    "lng": 114.265,
+    "orientation": 90,
+    "nearestStations": [
+      "Sai Kung"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.6,
+    "gazetted": false,
+    "nameTc": "西貢白沙灣",
+    "isBeach": true
+  },
+  {
+    "name": "Hoi Ha Beach",
+    "region": "Sai Kung",
+    "lat": 22.422,
+    "lng": 114.318,
+    "orientation": 230,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.7,
+    "gazetted": false,
+    "nameTc": "海下灣",
+    "isBeach": true
+  },
+  {
+    "name": "Chek Keng Beach",
+    "region": "Sai Kung",
+    "lat": 22.408,
+    "lng": 114.334,
+    "orientation": 300,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.5,
+    "gazetted": false,
+    "nameTc": "赤徑",
+    "isBeach": true
+  },
+  {
+    "name": "Lung Ha Wan",
+    "region": "Sai Kung",
+    "lat": 22.277,
+    "lng": 114.323,
+    "orientation": 130,
+    "nearestStations": [
+      "Tseung Kwan O",
+      "Sai Kung"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "西貢龍蝦灣",
+    "isBeach": true
+  },
+  {
+    "name": "Tap Mun Beach",
+    "region": "Sai Kung",
+    "lat": 22.469,
+    "lng": 114.352,
+    "orientation": 240,
+    "nearestStations": [
+      "Tap Mun"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "塔門",
+    "isBeach": true
+  },
+  {
+    "name": "Golden Beach",
+    "region": "Tuen Mun",
+    "lat": 22.381,
+    "lng": 113.975,
+    "orientation": 290,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "黃金泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Butterfly Beach",
+    "region": "Tuen Mun",
+    "lat": 22.4,
+    "lng": 113.975,
+    "orientation": 290,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.45,
+    "gazetted": true,
+    "nameTc": "蝴蝶灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Cafeteria Old Beach",
+    "region": "Tuen Mun",
+    "lat": 22.403,
+    "lng": 113.971,
+    "orientation": 285,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "舊咖啡灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Cafeteria New Beach",
+    "region": "Tuen Mun",
+    "lat": 22.405,
+    "lng": 113.97,
+    "orientation": 285,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.4,
+    "gazetted": true,
+    "nameTc": "新咖啡灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Kadoorie Beach",
+    "region": "Tuen Mun",
+    "lat": 22.374,
+    "lng": 113.983,
+    "orientation": 275,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.35,
+    "gazetted": true,
+    "nameTc": "加多利灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Castle Peak Beach",
+    "region": "Tuen Mun",
+    "lat": 22.368,
+    "lng": 113.97,
+    "orientation": 280,
+    "nearestStations": [
+      "Tuen Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.45,
+    "gazetted": true,
+    "nameTc": "青山灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Anglers' Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.38,
+    "lng": 113.994,
+    "orientation": 190,
+    "nearestStations": [
+      "Tsing Yi",
+      "Green Island"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "釣魚灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Gemini Beaches",
+    "region": "Tsuen Wan",
+    "lat": 22.379,
+    "lng": 114.003,
+    "orientation": 185,
+    "nearestStations": [
+      "Tsing Yi",
+      "Green Island"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "雙仙灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Casam Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.377,
+    "lng": 114.015,
+    "orientation": 185,
+    "nearestStations": [
+      "Tsing Yi"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "更生灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Hoi Mei Wan Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.378,
+    "lng": 114.011,
+    "orientation": 185,
+    "nearestStations": [
+      "Tsing Yi"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.5,
+    "gazetted": true,
+    "nameTc": "海美灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Lido Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.377,
+    "lng": 114.017,
+    "orientation": 185,
+    "nearestStations": [
+      "Tsing Yi"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.45,
+    "gazetted": true,
+    "nameTc": "麗都灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Ting Kau Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.375,
+    "lng": 114.025,
+    "orientation": 180,
+    "nearestStations": [
+      "Tsing Yi"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.45,
+    "gazetted": true,
+    "nameTc": "汀九灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Approach Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.374,
+    "lng": 114.032,
+    "orientation": 180,
+    "nearestStations": [
+      "Tsing Yi"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.45,
+    "gazetted": true,
+    "nameTc": "近水灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Ma Wan Tung Wan Beach",
+    "region": "Tsuen Wan",
+    "lat": 22.358,
+    "lng": 114.063,
+    "orientation": 90,
+    "nearestStations": [
+      "Tsing Yi",
+      "Chek Lap Kok"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.55,
+    "gazetted": true,
+    "nameTc": "馬灣東灣泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Tai Po Lung Mei Beach",
+    "region": "Tai Po",
+    "lat": 22.448,
+    "lng": 114.213,
+    "orientation": 180,
+    "nearestStations": [
+      "Tai Mei Tuk",
+      "Tai Po Kau"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.65,
+    "gazetted": true,
+    "nameTc": "大埔龍尾泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Lung Mei (Tai Po North)",
+    "region": "Tai Po",
+    "lat": 22.4721,
+    "lng": 114.2306,
+    "orientation": 180,
+    "nearestStations": [
+      "Tai Mei Tuk",
+      "Tap Mun"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.65,
+    "gazetted": true,
+    "nameTc": "大埔龍尾泳灘",
+    "isBeach": true
+  },
+  {
+    "name": "Starfish Bay",
+    "region": "Sha Tin",
+    "lat": 22.4319,
+    "lng": 114.2445,
+    "orientation": 90,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.5,
+    "gazetted": false,
+    "nameTc": "海星灣",
+    "isBeach": true
+  },
+  {
+    "name": "Wu Kai Sha Pebbles Beach",
+    "region": "Sha Tin",
+    "lat": 22.4277,
+    "lng": 114.2339,
+    "orientation": 10,
+    "nearestStations": [
+      "Tap Mun",
+      "Tai Mei Tuk"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.6,
+    "gazetted": false,
+    "nameTc": "烏溪沙石灘",
+    "isBeach": true
+  },
+  {
+    "name": "To Tau Wan",
+    "region": "Sha Tin",
+    "lat": 22.4325,
+    "lng": 114.239,
+    "orientation": 10,
+    "nearestStations": [
+      "Tap Mun",
+      "Tai Mei Tuk"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.6,
+    "gazetted": false,
+    "nameTc": "馬鞍山渡頭灣",
+    "isBeach": true
+  },
+  {
+    "name": "Lung Ha Wan (Hebe Haven)",
+    "region": "Sai Kung",
+    "lat": 22.3082,
+    "lng": 114.3037,
+    "orientation": 50,
+    "nearestStations": [
+      "Sai Kung",
+      "Tseung Kwan O"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "西貢龍蝦灣",
+    "isBeach": true
+  },
+  {
+    "name": "Sandy Bay",
+    "region": "HK Island",
+    "lat": 22.2705,
+    "lng": 114.1224,
+    "orientation": 270,
+    "nearestStations": [
+      "Green Island",
+      "Tsing Yi"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "沙灣",
+    "isBeach": true
+  },
+  {
+    "name": "Tung Chung Bay",
+    "region": "Lantau",
+    "lat": 22.2809,
+    "lng": 113.9295,
+    "orientation": 45,
+    "nearestStations": [
+      "Chek Lap Kok"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.6,
+    "gazetted": false,
+    "nameTc": "東涌灣",
+    "isBeach": true
+  },
+  {
+    "name": "Po Chue Tam",
+    "region": "Lantau",
+    "lat": 22.2598,
+    "lng": 113.8623,
+    "orientation": 255,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Green Island"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "大嶼山寶珠潭",
+    "isBeach": true
+  },
+  {
+    "name": "Peng Chau Tung Wan Beach",
+    "region": "Peng Chau",
+    "lat": 22.2859,
+    "lng": 114.04,
+    "orientation": 90,
+    "nearestStations": [
+      "Peng Chau"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "坪洲東灣沙灘",
+    "isBeach": true
+  },
+  {
+    "name": "Lung Kwu Tan",
+    "region": "Tuen Mun",
+    "lat": 22.3884,
+    "lng": 113.9203,
+    "orientation": 270,
+    "nearestStations": [
+      "Tuen Mun",
+      "Green Island"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.1,
+    "gazetted": false,
+    "nameTc": "屯門龍鼓灘",
+    "isBeach": true
+  },
+  {
+    "name": "Lung Kwu Sheung Tan",
+    "region": "Tuen Mun",
+    "lat": 22.4011,
+    "lng": 113.914,
+    "orientation": 270,
+    "nearestStations": [
+      "Tuen Mun",
+      "Green Island"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.1,
+    "gazetted": false,
+    "nameTc": "屯門龍鼓上灘",
+    "isBeach": true
+  },
+  {
+    "name": "Ap Chau",
+    "region": "North",
+    "lat": 22.5488,
+    "lng": 114.2743,
+    "orientation": 180,
+    "nearestStations": [
+      "Tap Mun"
+    ],
+    "exposure": 0.75,
+    "bayFactor": 0.25,
+    "gazetted": false,
+    "nameTc": "鴨洲",
+    "isBeach": true
+  },
+  {
+    "name": "Yung Shue Au",
+    "region": "North",
+    "lat": 22.5471,
+    "lng": 114.2468,
+    "orientation": 0,
+    "nearestStations": [
+      "Tap Mun",
+      "Tai Mei Tuk"
+    ],
+    "exposure": 0.55,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "榕樹凹",
+    "isBeach": true
+  },
+  {
+    "name": "Sheung Sze Wan, Sai Kung",
+    "region": "Sai Kung",
+    "lat": 22.3071569258834,
+    "lng": 114.29061502882,
+    "orientation": 50,
+    "nearestStations": [
+      "Sai Kung",
+      "Tseung Kwan O"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "西貢相思灣",
+    "isBeach": true
+  },
+  {
+    "name": "Sam Mun Tsai, Tai Po",
+    "region": "Tai Po",
+    "lat": 22.456968,
+    "lng": 114.21515,
+    "orientation": 180,
+    "nearestStations": [
+      "Tai Mei Tuk",
+      "Tai Po Kau"
+    ],
+    "exposure": 0.4,
+    "bayFactor": 0.55,
+    "gazetted": false,
+    "nameTc": "大埔三門仔",
+    "isBeach": true
+  },
+  {
+    "name": "Cheung Sha Lan, Lantau Island",
+    "region": "Lantau",
+    "lat": 22.289752,
+    "lng": 114.019525,
+    "orientation": 45,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "大嶼山的長沙欄海灘",
+    "isBeach": true
+  },
+  {
+    "name": "Shek O Back Beach",
+    "region": "HK Island",
+    "lat": 22.231623,
+    "lng": 114.251887,
+    "orientation": 135,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.9,
+    "bayFactor": 0.1,
+    "gazetted": true,
+    "nameTc": "石澳後灘",
+    "isBeach": true
+  },
+  {
+    "name": "Shek O Main Beach",
+    "region": "HK Island",
+    "lat": 22.227308,
+    "lng": 114.250605,
+    "orientation": 120,
+    "nearestStations": [
+      "Stanley",
+      "Waglan Island"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": true,
+    "nameTc": "石澳正灘",
+    "isBeach": true
+  },
+  {
+    "name": "Shek Pai Wan, Lamma",
+    "region": "Lamma",
+    "lat": 22.19726,
+    "lng": 114.139709,
+    "orientation": 110,
+    "nearestStations": [
+      "Lamma Island"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "南丫島石排灣",
+    "isBeach": true
+  },
+  {
+    "name": "Sam Pak Wan, Lantau",
+    "region": "Lantau",
+    "lat": 22.310280973775,
+    "lng": 114.018061738612,
+    "orientation": 30,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "大嶼山三白灣海灘",
+    "isBeach": true
+  },
+  {
+    "name": "Mo Tat Wan, Lamma",
+    "region": "Lamma",
+    "lat": 22.207927,
+    "lng": 114.145092,
+    "orientation": 337,
+    "nearestStations": [
+      "Lamma Island"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.3,
+    "gazetted": false,
+    "nameTc": "南丫島模達灣",
+    "isBeach": true
+  },
+  {
+    "name": "Lo Tik Wan, Lamma",
+    "region": "Lamma",
+    "lat": 22.223677,
+    "lng": 114.126544,
+    "orientation": 295,
+    "nearestStations": [
+      "Lamma Island",
+      "Cheung Chau"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "南丫島蘆荻灣",
+    "isBeach": true
+  },
+  {
+    "name": "Sha Ha, Sai Kung",
+    "region": "Sai Kung",
+    "lat": 22.388532,
+    "lng": 114.276041,
+    "orientation": 195,
+    "nearestStations": [
+      "Sai Kung"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "西貢沙下",
+    "isBeach": true
+  },
+  {
+    "name": "Pak Shui Wun",
+    "region": "Sai Kung",
+    "lat": 22.341095,
+    "lng": 114.265901,
+    "orientation": 240,
+    "nearestStations": [
+      "Sai Kung"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.45,
+    "gazetted": false,
+    "nameTc": "西貢白水碗",
+    "isBeach": true
+  },
+  {
+    "name": "Little Palm Beach, Sai Kung",
+    "region": "Sai Kung",
+    "lat": 22.320024,
+    "lng": 114.288102,
+    "orientation": 150,
+    "nearestStations": [
+      "Tseung Kwan O",
+      "Sai Kung"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.35,
+    "gazetted": false,
+    "nameTc": "小棕林沙灘",
+    "isBeach": true
+  }
+]

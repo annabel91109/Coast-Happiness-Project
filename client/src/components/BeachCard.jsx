@@ -26,14 +26,6 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
       <div className={`w-1.5 shrink-0 ${style.bar}`} />
 
       <div className="flex-1 min-w-0">
-        {/* Risk score progress bar */}
-        <div className="relative h-1 bg-[#e0f3f8]">
-          <div
-            className={`absolute left-0 top-0 h-full ${style.bar} transition-all`}
-            style={{ width: `${barPct}%` }}
-          />
-        </div>
-
         {/* Main content row */}
         <div className="flex items-center gap-3 px-3 py-3">
         {/* Score thumbnail */}

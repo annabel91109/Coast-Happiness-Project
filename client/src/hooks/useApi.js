@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 
 const REFRESH_INTERVAL_MS = 10 * 60 * 1000;
+const API_BASE = import.meta.env.VITE_API_BASE || "";
 
 export function useApi(url) {
+  url = API_BASE + url;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
