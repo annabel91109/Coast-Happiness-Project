@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useLang } from "../LangContext";
 import { T } from "../i18n";
 import BeachCard from "./BeachCard";
@@ -11,6 +11,14 @@ export default function BeachList({ predictions, events = [], epdUrl }) {
   const [gazettedFilter, setGazettedFilter] = useState("all");
   const { lang } = useLang();
   const t = T[lang];
+
+  const regionCounts = useMemo(() => {
+    const counts = {};
+    for (const p of predictions) {
+      counts[p.region] = (counts[p.region] || 0) + 1;
+    }
+    return counts;
+  }, [predictions]);
 
   if (!predictions || predictions.length === 0) {
     return <p className="text-[#145e6a] text-center py-8">{t.noData}</p>;
@@ -36,6 +44,7 @@ export default function BeachList({ predictions, events = [], epdUrl }) {
             <button
               key={f}
               onClick={() => setGazettedFilter(f)}
+              aria-pressed={gazettedFilter === f}
               className={`px-3 py-1.5 transition-colors ${
                 gazettedFilter === f
                   ? "bg-[#145e6a] text-white"
@@ -53,6 +62,7 @@ export default function BeachList({ predictions, events = [], epdUrl }) {
             <button
               key={r}
               onClick={() => setActiveRegion(r)}
+              aria-pressed={activeRegion === r}
               className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                 activeRegion === r
                   ? "bg-[#145e6a] text-white border-[#145e6a]"
@@ -62,7 +72,7 @@ export default function BeachList({ predictions, events = [], epdUrl }) {
               {t.regions[r] || r}
               {r !== "All" && (
                 <span className="ml-1 opacity-60">
-                  ({predictions.filter((p) => p.region === r).length})
+                  ({regionCounts[r] || 0})
                 </span>
               )}
             </button>

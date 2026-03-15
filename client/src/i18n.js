@@ -10,6 +10,9 @@ export const T = {
     map: "Map",
 
     // Sidebar
+    navCleanupAction: "Cleanup Action",
+    navHostCleanup: "Host a Cleanup",
+    navJoinCleanup: "Join a Cleanup",
     navTrashPredictor: "Trash Predictor",
     navRank: "Rank",
     navMap: "Map",
@@ -56,10 +59,14 @@ export const T = {
     offline: "Offline — showing cached data",
     noData: "No predictions available.",
     noBeaches: "No beaches in this region.",
+    comingSoonHost: "Coming soon — organize your own beach cleanup event.",
+    comingSoonJoin: "Coming soon — find and join upcoming beach cleanup events near you.",
 
     // Auth
     auth: {
       signIn: "Sign In",
+      signUp: "Sign Up",
+      logIn: "Log In",
       signOut: "Sign Out",
       createAccount: "Create Account",
       continueWithGoogle: "Continue with Google",
@@ -123,6 +130,9 @@ export const T = {
     map: "地圖",
 
     // Sidebar
+    navCleanupAction: "清潔行動",
+    navHostCleanup: "舉辦清潔活動",
+    navJoinCleanup: "參加清潔活動",
     navTrashPredictor: "垃圾預測",
     navRank: "排名",
     navMap: "地圖",
@@ -169,10 +179,14 @@ export const T = {
     offline: "離線 — 顯示快取資料",
     noData: "暫無預測資料。",
     noBeaches: "此地區沒有海灘。",
+    comingSoonHost: "即將推出 — 舉辦您自己的海灘清潔活動。",
+    comingSoonJoin: "即將推出 — 尋找並參加您附近的海灘清潔活動。",
 
     // Auth
     auth: {
       signIn: "登入",
+      signUp: "註冊",
+      logIn: "登入",
       signOut: "登出",
       createAccount: "建立帳戶",
       continueWithGoogle: "使用 Google 帳戶繼續",

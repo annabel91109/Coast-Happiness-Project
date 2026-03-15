@@ -3,10 +3,10 @@ import { useLang } from "../LangContext";
 import { T } from "../i18n";
 
 const RISK_COLORS = {
-  "Very High": "#dc2626",
-  High: "#f97316",
-  Moderate: "#eab308",
-  Low: "#22c55e",
+  "Very High": "#b06060",
+  High: "#c89090",
+  Moderate: "#c0a040",
+  Low: "#5e9e70",
 };
 
 export default function BeachMap({ predictions }) {
@@ -17,8 +17,8 @@ export default function BeachMap({ predictions }) {
     <MapContainer
       center={[22.3, 114.15]}
       zoom={11}
-      style={{ height: "500px", width: "100%" }}
-      className="rounded-lg shadow-sm"
+      style={{ width: "100%" }}
+      className="h-[60vh] min-h-[300px] rounded-lg shadow-sm"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

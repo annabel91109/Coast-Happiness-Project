@@ -21,17 +21,21 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
   const past = events.filter((e) => !e.upcoming);
 
   return (
-    <div className="bg-[#8ab5af] overflow-hidden rounded-xl shadow-sm">
-      {/* Risk score progress bar */}
-      <div className="relative h-1 bg-[#e0f3f8]">
-        <div
-          className={`absolute left-0 top-0 h-full ${style.bar} transition-all`}
-          style={{ width: `${barPct}%` }}
-        />
-      </div>
+    <div className="bg-white overflow-hidden rounded-xl shadow-sm flex">
+      {/* Left risk accent strip */}
+      <div className={`w-1.5 shrink-0 ${style.bar}`} />
 
-      {/* Main content row */}
-      <div className="flex items-center gap-3 bg-white px-3 py-3">
+      <div className="flex-1 min-w-0">
+        {/* Risk score progress bar */}
+        <div className="relative h-1 bg-[#e0f3f8]">
+          <div
+            className={`absolute left-0 top-0 h-full ${style.bar} transition-all`}
+            style={{ width: `${barPct}%` }}
+          />
+        </div>
+
+        {/* Main content row */}
+        <div className="flex items-center gap-3 px-3 py-3">
         {/* Score thumbnail */}
         <div className="shrink-0 w-12 h-12 flex items-center justify-center">
           <span className="text-lg font-bold leading-none text-black">{index}</span>
@@ -72,7 +76,7 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
 
       {/* Events */}
       {events.length > 0 && (
-        <div className="px-3 py-3 bg-white border-t border-[#8ab5af] space-y-1">
+        <div className="px-3 py-3 border-t border-gray-100 space-y-1">
           {upcoming.map((e, i) => (
             <EventRow key={i} event={e} lang={lang} epdUrl={epdUrl} upcoming />
           ))}
@@ -81,6 +85,7 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

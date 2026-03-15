@@ -32,7 +32,7 @@ function AppInner() {
   const [customFrom, setCustomFrom] = useState(oneMonthAgoStr);
   const [customTo, setCustomTo] = useState(todayStr);
   const [appliedCustom, setAppliedCustom] = useState(null);
-  const [showAuth, setShowAuth] = useState(false);
+  const [authMode, setAuthMode] = useState(null); // null | "signin" | "signup"
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { lang, setLang } = useLang();
   const t = T[lang];
@@ -84,6 +84,36 @@ function AppInner() {
 
         {/* Nav */}
         <nav className="flex-1 px-2 py-4 overflow-y-auto">
+          {/* Cleanup Action section */}
+          <div className="mb-1">
+            <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/50 select-none">
+              <span>💪</span>
+              <span>{t.navCleanupAction}</span>
+            </div>
+            <button
+              onClick={() => { if (!user) { setAuthMode("signin"); return; } setView("host"); setSidebarOpen(false); }}
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 ${
+                view === "host"
+                  ? "bg-white/15 text-white font-medium"
+                  : "text-white/70 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <span className="text-base">📋</span>
+              {t.navHostCleanup}
+            </button>
+            <button
+              onClick={() => { if (!user) { setAuthMode("signin"); return; } setView("join"); setSidebarOpen(false); }}
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 ${
+                view === "join"
+                  ? "bg-white/15 text-white font-medium"
+                  : "text-white/70 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <span className="text-base">🤝</span>
+              {t.navJoinCleanup}
+            </button>
+          </div>
+
           {/* Trash Predictor section */}
           <div className="mb-1">
             <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/50 select-none">
@@ -92,7 +122,7 @@ function AppInner() {
             </div>
             <button
               onClick={() => { setView("list"); setSidebarOpen(false); }}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 ${
                 view === "list"
                   ? "bg-white/15 text-white font-medium"
                   : "text-white/70 hover:bg-white/10 hover:text-white"
@@ -103,7 +133,7 @@ function AppInner() {
             </button>
             <button
               onClick={() => { setView("map"); setSidebarOpen(false); }}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 ${
                 view === "map"
                   ? "bg-white/15 text-white font-medium"
                   : "text-white/70 hover:bg-white/10 hover:text-white"
@@ -151,12 +181,20 @@ function AppInner() {
               </div>
             </div>
           ) : (
-            <button
-              onClick={() => setShowAuth(true)}
-              className="w-full py-1.5 text-sm font-medium bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors"
-            >
-              {t.auth.signIn}
-            </button>
+            <div className="flex rounded-lg overflow-hidden border border-white/20 text-sm">
+              <button
+                onClick={() => setAuthMode("signup")}
+                className="flex-1 py-1.5 font-medium bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                {t.auth.signUp}
+              </button>
+              <button
+                onClick={() => setAuthMode("signin")}
+                className="flex-1 py-1.5 font-medium bg-white/10 hover:bg-white/20 text-white transition-colors border-l border-white/20"
+              >
+                {t.auth.logIn}
+              </button>
+            </div>
           )}
         </div>
       </aside>
@@ -180,7 +218,7 @@ function AppInner() {
             </button>
 
             <h1 className="text-white font-semibold text-sm md:text-base">
-              {view === "map" ? t.trashHotspots : t.beachRankings}
+              {view === "host" ? t.navHostCleanup : view === "join" ? t.navJoinCleanup : view === "map" ? t.trashHotspots : t.beachRankings}
             </h1>
 
             {!online && (
@@ -202,19 +240,34 @@ function AppInner() {
         {/* Scrollable content */}
         <main className="flex-1 overflow-y-auto px-4 py-6">
           <div className="max-w-3xl mx-auto">
-            {error && (
+            {view === "host" && (
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-lg font-semibold text-[#0d3d47] mb-2">{t.navHostCleanup}</h2>
+                <p className="text-sm text-[#145e6a]">{t.comingSoonHost}</p>
+              </div>
+            )}
+
+            {view === "join" && (
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-lg font-semibold text-[#0d3d47] mb-2">{t.navJoinCleanup}</h2>
+                <p className="text-sm text-[#145e6a]">{t.comingSoonJoin}</p>
+              </div>
+            )}
+
+            {(view === "list" || view === "map") && error && (
               <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6">
                 {t.failedLoad}: {error}
               </div>
             )}
 
-            {loading && !predictions.data && (
+            {(view === "list" || view === "map") && loading && !predictions.data && (
               <div className="text-center py-12 text-[#145e6a]">
                 {t.loadingWind}
               </div>
             )}
 
             {/* Period toggle */}
+            {(view === "list" || view === "map") && (<>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className="text-sm text-[#145e6a]">{t.past}</span>
               <div className="flex rounded-lg overflow-hidden border border-[#8ab5af] text-sm w-fit">
@@ -245,6 +298,7 @@ function AppInner() {
                   max={customTo || todayStr()}
                   value={customFrom}
                   onChange={(e) => setCustomFrom(e.target.value)}
+                  aria-label="Start date"
                   className="border border-[#8ab5af] rounded-lg px-2 py-1.5 text-sm text-[#145e6a] bg-white"
                 />
                 <span className="text-sm text-[#145e6a]">→</span>
@@ -254,6 +308,7 @@ function AppInner() {
                   max={todayStr()}
                   value={customTo}
                   onChange={(e) => setCustomTo(e.target.value)}
+                  aria-label="End date"
                   className="border border-[#8ab5af] rounded-lg px-2 py-1.5 text-sm text-[#145e6a] bg-white"
                 />
                 <button
@@ -300,11 +355,12 @@ function AppInner() {
                 </p>
               </>
             )}
+            </>)}
           </div>
         </main>
       </div>
 
-      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      {authMode && <AuthModal initialMode={authMode} onClose={() => setAuthMode(null)} />}
     </div>
   );
 }
