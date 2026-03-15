@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
       if (isNaN(fromMs) || isNaN(toMs)) {
         return res.status(400).json({ error: "Invalid date format" });
       }
-      const snapshots = windHistory.getSnapshotsByRange(fromMs, toMs);
+      const snapshots = await windHistory.getSnapshotsByRange(fromMs, toMs);
       const marine = await getMarineData().catch(() => null);
       if (snapshots.length === 0) {
         const wind = await getWindData();
@@ -43,7 +43,7 @@ router.get("/", async (req, res) => {
         return res.status(400).json({ error: `Invalid period. Valid: ${validPeriods.join(", ")}` });
       }
 
-      const snapshots = windHistory.getSnapshots(period);
+      const snapshots = await windHistory.getSnapshots(period);
       const marine = await getMarineData().catch(() => null);
 
       if (snapshots.length === 0) {
