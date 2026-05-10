@@ -19,8 +19,72 @@ const COMPASS_TO_DEGREES = {
   "North Northwest": 337.5,
 };
 
+const COMPASS_BY_DEGREES = Object.entries(COMPASS_TO_DEGREES)
+  .map(([name, deg]) => ({ name, deg }));
+
 function compassToDegrees(compass) {
   return COMPASS_TO_DEGREES[compass] ?? null;
+}
+
+function degreesToCompass(deg) {
+  if (deg == null) return null;
+  const norm = ((deg % 360) + 360) % 360;
+  let best = COMPASS_BY_DEGREES[0];
+  let bestDiff = 360;
+  for (const c of COMPASS_BY_DEGREES) {
+    let diff = Math.abs(norm - c.deg);
+    if (diff > 180) diff = 360 - diff;
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = c;
+    }
+  }
+  return best.name;
+}
+
+function stationDeg(station) {
+  if (station.directionDeg != null) return station.directionDeg;
+  return compassToDegrees(station.direction);
+}
+
+// Difficulty 1-5 derived from three signals: how far the beach is from
+// the road network (roadTier), how long the walk-in is (hikeMinutes),
+// and how rough the ground is (hikeGrade). Combining them avoids the
+// bug where a flat 10-min coastal stroll (Nim Shue Wan) scored the
+// same as a 10-min rocky scramble.
+//
+//   roadTier  road | ferry → 0     kaito → +2     remote → +3
+//   hike min  <15 → 0   15-29 → 1   30-59 → 2   60-119 → 3   120+ → 4
+//   hikeGrade flat → 0   rolling → +1   steep → +2   scramble → +2
+//
+// Final = clamp(1, 5, 1 + roadBonus + hikeBase + gradeBonus). A legacy
+// hand-set accessDifficulty is honoured only when none of the new
+// fields are present (defensive default during the data backfill).
+function deriveAccessDifficulty(beach) {
+  const hasNewFields =
+    beach.roadTier != null ||
+    beach.hikeGrade != null ||
+    beach.hikeMinutes != null;
+  if (!hasNewFields) return beach.accessDifficulty ?? 1;
+
+  const roadBonus =
+    beach.roadTier === "remote" ? 3 :
+    beach.roadTier === "kaito"  ? 2 : 0;
+
+  const m = beach.hikeMinutes ?? 0;
+  const hikeBase =
+    m >= 120 ? 4 :
+    m >= 60  ? 3 :
+    m >= 30  ? 2 :
+    m >= 15  ? 1 : 0;
+
+  const gradeBonus =
+    beach.hikeGrade === "scramble" ? 2 :
+    beach.hikeGrade === "steep"    ? 2 :
+    beach.hikeGrade === "rolling"  ? 1 : 0;
+
+  const score = 1 + roadBonus + hikeBase + gradeBonus;
+  return Math.max(1, Math.min(5, score));
 }
 
 // Key HK river mouths — persistent sources of floating debris
@@ -73,82 +137,149 @@ function getRiskLevel(score) {
   return "Low";
 }
 
-function predict(windStations, marineData) {
-  const stationMap = new Map();
-  for (const s of windStations) {
-    stationMap.set(s.station, s);
+// 72-hour decay-weighted wind integration. The current snapshot enters
+// at full weight (age = 0), past snapshots are weighted exp(-age/τ) with
+// an 18-hour half-life, and anything older than 72h is dropped. Direction
+// is averaged as a vector (u, v) so 350°+10° collapses to North, not 180°.
+const WIND_HALF_LIFE_MS = 18 * 60 * 60 * 1000;
+const WIND_WINDOW_MS = 72 * 60 * 60 * 1000;
+const WIND_TAU_MS = WIND_HALF_LIFE_MS / Math.LN2;
+
+function smoothStations(currentStations, recentSnapshots, now) {
+  const acc = new Map();
+  const upsert = (name, dirDeg, speed, gust, w) => {
+    if (dirDeg == null || speed == null || w <= 0) return;
+    const rad = (dirDeg * Math.PI) / 180;
+    let e = acc.get(name);
+    if (!e) {
+      e = { sumU: 0, sumV: 0, sumW: 0, gustSum: 0, gustW: 0 };
+      acc.set(name, e);
+    }
+    e.sumU += Math.sin(rad) * speed * w;
+    e.sumV += Math.cos(rad) * speed * w;
+    e.sumW += w;
+    if (gust != null) {
+      e.gustSum += gust * w;
+      e.gustW += w;
+    }
+  };
+
+  for (const s of currentStations || []) {
+    upsert(s.station, stationDeg(s), s.speed, s.gust, 1);
+  }
+  for (const snap of recentSnapshots || []) {
+    const age = now - snap.timestamp;
+    if (age <= 0 || age > WIND_WINDOW_MS) continue;
+    const w = Math.exp(-age / WIND_TAU_MS);
+    for (const s of snap.stations || []) {
+      upsert(s.station, stationDeg(s), s.speed, s.gust, w);
+    }
   }
 
+  const result = [];
+  for (const [name, e] of acc) {
+    if (e.sumW === 0) continue;
+    const u = e.sumU / e.sumW;
+    const v = e.sumV / e.sumW;
+    const speed = Math.sqrt(u * u + v * v);
+    const directionDeg = ((Math.atan2(u, v) * 180) / Math.PI + 360) % 360;
+    result.push({
+      station: name,
+      directionDeg,
+      direction: degreesToCompass(directionDeg),
+      speed: Math.round(speed * 10) / 10,
+      gust: e.gustW > 0 ? Math.round((e.gustSum / e.gustW) * 10) / 10 : null,
+    });
+  }
+  return result;
+}
+
+// Compute the per-beach wind-debris pressure from a list of station
+// readings. Returns the same blended scalar that feeds the dynamic
+// score (avgOnshore * speedFactor + gustBonus) so the smoothed and
+// instantaneous variants can be compared apples-to-apples.
+function beachWindScore(stationList, beachOrientation, maxSpeed) {
+  let onshoreSum = 0, speedFactorSum = 0, gustBonusSum = 0, count = 0;
+  for (const s of stationList) {
+    const dirDeg = stationDeg(s);
+    if (dirDeg == null || s.speed == null) continue;
+    const onshore = calcOnshoreScore(dirDeg, beachOrientation);
+    const speedFactor = s.speed / maxSpeed;
+    const gustBonus = s.gust != null ? ((s.gust - s.speed) / maxSpeed) * 0.15 : 0;
+    onshoreSum += onshore;
+    speedFactorSum += speedFactor;
+    gustBonusSum += gustBonus;
+    count++;
+  }
+  if (count === 0) return null;
+  return (onshoreSum / count) * (speedFactorSum / count) + (gustBonusSum / count);
+}
+
+function emptyResult(beach, marineData) {
+  return {
+    beach: beach.name,
+    nameTc: beach.nameTc || null,
+    region: beach.region,
+    gazetted: beach.gazetted ?? false,
+    accessDifficulty: deriveAccessDifficulty(beach),
+    hikeMinutes: beach.hikeMinutes ?? null,
+    boatOnly: beach.boatOnly === true,
+    isBeach: beach.isBeach ?? true,
+    lat: beach.lat,
+    lng: beach.lng,
+    score: 0,
+    riskLevel: "Low",
+    riverScore: Math.round(calcRiverScore(beach) * 100) / 100,
+    windInfo: null,
+    waveInfo: marineData ? { height: marineData.waveHeight, direction: marineData.waveDirection, period: marineData.wavePeriod } : null,
+    topFactors: [],
+    recentStormBoost: false,
+  };
+}
+
+// opts.recentSnapshots: decay-weighted wind smoothing source (live mode).
+// opts.now: ms timestamp used for smoothing (defaults to Date.now()).
+function predict(windStations, marineData, opts = {}) {
+  const recentSnapshots = Array.isArray(opts.recentSnapshots) ? opts.recentSnapshots : null;
+  const useSmoothing = recentSnapshots && recentSnapshots.length > 0;
+  const now = opts.now ?? Date.now();
+
+  const effectiveStations = useSmoothing
+    ? smoothStations(windStations, recentSnapshots, now)
+    : windStations;
+
+  const stationMap = new Map(effectiveStations.map((s) => [s.station, s]));
+  const currentMap = useSmoothing
+    ? new Map(windStations.map((s) => [s.station, s]))
+    : null;
+
   const maxSpeed = Math.max(
-    ...windStations.map((s) => s.speed ?? 0),
+    ...effectiveStations.map((s) => s.speed ?? 0),
     1
   );
 
   const results = beaches.map((beach) => {
-    const relevantStations = beach.nearestStations
-      .map((name) => stationMap.get(name))
-      .filter(Boolean);
+    const eff = beach.nearestStations.map((n) => stationMap.get(n)).filter(Boolean);
+    if (eff.length === 0) return emptyResult(beach, marineData);
 
-    if (relevantStations.length === 0) {
-      return {
-        beach: beach.name,
-        nameTc: beach.nameTc || null,
-        region: beach.region,
-        gazetted: beach.gazetted ?? false,
-        isBeach: beach.isBeach ?? true,
-        lat: beach.lat,
-        lng: beach.lng,
-        score: 0,
-        riskLevel: "Low",
-        riverScore: Math.round(calcRiverScore(beach) * 100) / 100,
-        windInfo: null,
-        waveInfo: marineData ? { height: marineData.waveHeight, direction: marineData.waveDirection, period: marineData.wavePeriod } : null,
-      };
+    const effWindScore = beachWindScore(eff, beach.orientation, maxSpeed);
+    if (effWindScore == null) return emptyResult(beach, marineData);
+
+    let recentStormBoost = false;
+    if (useSmoothing) {
+      const cur = beach.nearestStations.map((n) => currentMap.get(n)).filter(Boolean);
+      const curWindScore = cur.length > 0
+        ? beachWindScore(cur, beach.orientation, maxSpeed)
+        : null;
+      if (
+        curWindScore != null &&
+        effWindScore > 0.1 &&
+        effWindScore > curWindScore * 1.3
+      ) {
+        recentStormBoost = true;
+      }
     }
 
-    // Average across nearby stations
-    let totalOnshore = 0;
-    let totalSpeedFactor = 0;
-    let totalGustBonus = 0;
-    let stationCount = 0;
-
-    for (const station of relevantStations) {
-      const windDeg = compassToDegrees(station.direction);
-      if (windDeg === null || station.speed === null) continue;
-
-      const onshore = calcOnshoreScore(windDeg, beach.orientation);
-      const speedFactor = station.speed / maxSpeed;
-      const gustBonus =
-        station.gust !== null ? ((station.gust - station.speed) / maxSpeed) * 0.15 : 0;
-
-      totalOnshore += onshore;
-      totalSpeedFactor += speedFactor;
-      totalGustBonus += gustBonus;
-      stationCount++;
-    }
-
-    if (stationCount === 0) {
-      return {
-        beach: beach.name,
-        nameTc: beach.nameTc || null,
-        region: beach.region,
-        gazetted: beach.gazetted ?? false,
-        isBeach: beach.isBeach ?? true,
-        lat: beach.lat,
-        lng: beach.lng,
-        score: 0,
-        riskLevel: "Low",
-        riverScore: Math.round(calcRiverScore(beach) * 100) / 100,
-        windInfo: null,
-        waveInfo: marineData ? { height: marineData.waveHeight, direction: marineData.waveDirection, period: marineData.wavePeriod } : null,
-      };
-    }
-
-    const avgOnshore = totalOnshore / stationCount;
-    const avgSpeedFactor = totalSpeedFactor / stationCount;
-    const avgGustBonus = totalGustBonus / stationCount;
-
-    // Wave component (Open-Meteo Marine)
     let waveScore = 0;
     if (marineData?.waveHeight != null && marineData?.waveDirection != null) {
       const waveOnshore = calcOnshoreScore(marineData.waveDirection, beach.orientation);
@@ -156,31 +287,60 @@ function predict(windStations, marineData) {
       waveScore = waveOnshore * waveHeightFactor;
     }
 
-    // Blend: wind 60% + wave 20% + river proximity 20%, with bay trapping multiplier
-    const windScore = avgOnshore * avgSpeedFactor + avgGustBonus;
     const riverScore = calcRiverScore(beach);
+    const historical = beach.historicalWeight ?? 0.4;
     const bayMultiplier = 1 + (beach.bayFactor ?? 0) * 0.3;
-    const raw = (windScore * 0.60 + waveScore * 0.20 + riverScore * 0.20) * bayMultiplier * beach.exposure;
+    // Exposure gates only the wind/wave/river components (those depend on
+    // openness to incoming debris flow). The historical prior already encodes
+    // accumulation reality, so it bypasses exposure — otherwise semi-enclosed
+    // hotspots like Cheung Sha Lan get suppressed by their own shelter.
+    const dynamic =
+      (effWindScore * 0.45 + waveScore * 0.15 + riverScore * 0.15) * beach.exposure;
+    const raw = (dynamic + historical * 0.25) * bayMultiplier;
     const score = Math.min(1, Math.max(0, raw));
+
+    // Top factors: rank each blended component by its actual contribution
+    // to the score, so the explainer surfaces what is *driving* this beach
+    // today. Bay trapping enters as a pseudo-factor when materially boosting.
+    const contributions = [
+      { key: "wind",       value: effWindScore * 0.45 * beach.exposure },
+      { key: "wave",       value: waveScore * 0.15 * beach.exposure },
+      { key: "river",      value: riverScore * 0.15 * beach.exposure },
+      { key: "historical", value: historical * 0.25 },
+    ];
+    if ((beach.bayFactor ?? 0) >= 0.4) {
+      contributions.push({ key: "bay", value: (beach.bayFactor ?? 0) * 0.15 });
+    }
+    contributions.sort((a, b) => b.value - a.value);
+    const topFactors = contributions
+      .filter((c) => c.value > 0.02)
+      .slice(0, 2)
+      .map((c) => c.key);
 
     return {
       beach: beach.name,
       nameTc: beach.nameTc || null,
       region: beach.region,
       gazetted: beach.gazetted ?? false,
+      accessDifficulty: deriveAccessDifficulty(beach),
+      hikeMinutes: beach.hikeMinutes ?? null,
+      boatOnly: beach.boatOnly === true,
       isBeach: beach.isBeach ?? true,
       lat: beach.lat,
       lng: beach.lng,
+      placeId: beach.placeId || null,
       score: Math.round(score * 100) / 100,
       riskLevel: getRiskLevel(score),
       riverScore: Math.round(riverScore * 100) / 100,
-      windInfo: relevantStations.map((s) => ({
+      windInfo: eff.map((s) => ({
         station: s.station,
         direction: s.direction,
         speed: s.speed,
         gust: s.gust,
       })),
       waveInfo: marineData ? { height: marineData.waveHeight, direction: marineData.waveDirection, period: marineData.wavePeriod } : null,
+      topFactors,
+      recentStormBoost,
     };
   });
 
@@ -191,67 +351,50 @@ function predict(windStations, marineData) {
 function predictHistorical(snapshots, marineData) {
   if (snapshots.length === 0) return [];
 
-  // Calculate predictions for each snapshot
-  const allPredictions = snapshots.map((snap, i) => ({
-    dayKey: new Date(snap.timestamp).toISOString().slice(0, 10),
-    predictions: predict(snap.stations, marineData),
-  }));
+  // Calculate predictions for each snapshot, then average scores per beach
+  const allPredictions = snapshots.map((snap) => predict(snap.stations, marineData));
 
-  // Group snapshots by day and average within each day first,
-  // then average across days so each day is weighted equally
-  const beachDayScores = new Map(); // beach -> Map(day -> { sum, count })
-  const beachMeta = new Map();
-  for (const { dayKey, predictions } of allPredictions) {
-    for (const p of predictions) {
-      if (!beachMeta.has(p.beach)) {
-        beachMeta.set(p.beach, { lat: p.lat, lng: p.lng, region: p.region, gazetted: p.gazetted, isBeach: p.isBeach ?? true, nameTc: p.nameTc || null });
-      }
-      if (!beachMeta.get(p.beach).nameTc && p.nameTc) beachMeta.get(p.beach).nameTc = p.nameTc;
-
-      if (!beachDayScores.has(p.beach)) beachDayScores.set(p.beach, new Map());
-      const days = beachDayScores.get(p.beach);
-      if (!days.has(dayKey)) days.set(dayKey, { sum: 0, count: 0 });
-      const day = days.get(dayKey);
-      day.sum += p.score;
-      day.count++;
-    }
-  }
-
-  // Average: first within each day, then across days
+  // Build average scores keyed by beach name
   const beachTotals = new Map();
-  for (const [beach, days] of beachDayScores) {
-    let daySum = 0;
-    let dayCount = 0;
-    for (const [, day] of days) {
-      daySum += day.sum / day.count; // daily average
-      dayCount++;
+  for (const predictions of allPredictions) {
+    for (const p of predictions) {
+      if (!beachTotals.has(p.beach)) {
+        beachTotals.set(p.beach, { sum: 0, count: 0, lat: p.lat, lng: p.lng, region: p.region, gazetted: p.gazetted, accessDifficulty: p.accessDifficulty ?? null, hikeMinutes: p.hikeMinutes ?? null, boatOnly: p.boatOnly === true, isBeach: p.isBeach ?? true, nameTc: p.nameTc || null });
+      }
+      const entry = beachTotals.get(p.beach);
+      entry.sum += p.score;
+      entry.count++;
+      if (!entry.nameTc && p.nameTc) entry.nameTc = p.nameTc;
     }
-    beachTotals.set(beach, { avgScore: daySum / dayCount, dayCount });
   }
 
   // Use the latest snapshot's windInfo for display
-  const latestPredictions = allPredictions[allPredictions.length - 1].predictions;
+  const latestPredictions = allPredictions[allPredictions.length - 1];
   const latestMap = new Map(latestPredictions.map((p) => [p.beach, p]));
 
   const results = [];
   for (const [beachName, totals] of beachTotals) {
-    const avgScore = Math.round(totals.avgScore * 100) / 100;
-    const meta = beachMeta.get(beachName);
+    const avgScore = Math.round((totals.sum / totals.count) * 100) / 100;
     const latest = latestMap.get(beachName);
     results.push({
       beach: beachName,
-      nameTc: meta.nameTc,
-      region: meta.region,
-      gazetted: meta.gazetted,
-      isBeach: meta.isBeach,
-      lat: meta.lat,
-      lng: meta.lng,
+      nameTc: totals.nameTc,
+      region: totals.region,
+      gazetted: totals.gazetted,
+      accessDifficulty: totals.accessDifficulty,
+      hikeMinutes: totals.hikeMinutes,
+      boatOnly: totals.boatOnly === true,
+      isBeach: totals.isBeach,
+      lat: totals.lat,
+      lng: totals.lng,
       score: avgScore,
       riskLevel: getRiskLevel(avgScore),
       riverScore: latest ? latest.riverScore : null,
       windInfo: latest ? latest.windInfo : null,
       waveInfo: latest ? latest.waveInfo : null,
-      snapshotCount: totals.dayCount,
+      snapshotCount: totals.count,
+      topFactors: latest ? latest.topFactors : [],
+      recentStormBoost: false,
     });
   }
 
@@ -259,4 +402,12 @@ function predictHistorical(snapshots, marineData) {
   return results;
 }
 
-module.exports = { predict, predictHistorical, compassToDegrees, calcOnshoreScore, getRiskLevel };
+module.exports = {
+  predict,
+  predictHistorical,
+  compassToDegrees,
+  degreesToCompass,
+  calcOnshoreScore,
+  getRiskLevel,
+  smoothStations,
+};

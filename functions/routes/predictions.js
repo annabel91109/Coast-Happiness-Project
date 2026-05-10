@@ -62,24 +62,31 @@ router.get("/", async (req, res) => {
 
       const predictions = predictHistorical(snapshots, marine);
       const dayCount = new Set(snapshots.map((s) => new Date(s.timestamp).toISOString().slice(0, 10))).size;
+      // For 24h/48h, cap at the period's actual day span to avoid calendar-boundary inflation
+      const periodDayCap = { "24h": 1, "48h": 2 };
+      const reportedDays = periodDayCap[period] ? Math.min(dayCount, periodDayCap[period]) : dayCount;
       return res.json({
         predictions,
         period,
-        snapshotCount: dayCount,
+        snapshotCount: reportedDays,
         oldestSnapshot: new Date(snapshots[0].timestamp).toISOString(),
         newestSnapshot: new Date(snapshots[snapshots.length - 1].timestamp).toISOString(),
         generatedAt: new Date().toISOString(),
       });
     }
 
-    // Default: current/live predictions
+    // Default: current/live predictions, with the past 72h of wind folded
+    // in via decay-weighted vector averaging. Captures post-storm trash
+    // accumulation that the latest hour alone misses.
     const [wind, marine] = await Promise.all([
       getWindData(),
       getMarineData().catch(() => null),
     ]);
     if (!wind) return res.status(503).json({ error: "Wind data not yet available" });
 
-    const predictions = predict(wind.stations, marine);
+    const now = Date.now();
+    const recentSnapshots = await windHistory.getSnapshotsByRange(now - 72 * 60 * 60 * 1000, now);
+    const predictions = predict(wind.stations, marine, { recentSnapshots, now });
     res.json({
       predictions,
       windDataFetchedAt: wind.fetchedAt,

@@ -3,6 +3,7 @@ const path = require("path");
 const windRoutes = require("./routes/wind");
 const predictionRoutes = require("./routes/predictions");
 const eventsRoutes = require("./routes/events");
+const cleanupRoutes = require("./routes/cleanups");
 const { startPolling } = require("./services/windFetcher");
 const { startPolling: startEventsPolling } = require("./services/eventsFetcher");
 const { startPolling: startMarinePolling } = require("./services/marineFetcher");
@@ -20,6 +21,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/wind", windRoutes);
 app.use("/api/predictions", predictionRoutes);
 app.use("/api/events", eventsRoutes);
+app.use("/api/cleanups", cleanupRoutes);
 
 // Serve built frontend
 const distPath = path.join(__dirname, "../client/dist");

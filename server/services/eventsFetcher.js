@@ -1,10 +1,18 @@
 const fs = require("fs");
 const path = require("path");
 
-const EPD_EVENTS_URL =
-  "https://www.epd.gov.hk/epd/clean_shorelines/data/events.json";
+// HandsOn HK exposes the volunteer.handsonhongkong.org/environment listing as
+// a JSON-returning AJAX endpoint. The block IDs are baked into the page HTML
+// (searchResultId=1673, parentBlockId=76160) and are stable. The form posts
+// the issue-area filter as a multi-select, which Solr ANDs against the rest
+// of the saved block configuration.
+const HANDSON_URL =
+  "https://volunteer.handsonhongkong.org/search/GetOpportunitiesSearchResultBlockGrid";
+const HANDSON_REFERER =
+  "https://volunteer.handsonhongkong.org/environment?layoutViewMode=tablet";
+
 const CACHE_FILE = path.join(__dirname, "../data/events-cache.json");
-const FETCH_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const FETCH_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 let cache = { events: null, fetchedAt: null };
 let intervalId = null;
@@ -15,7 +23,7 @@ function loadFromDisk() {
       const raw = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
       cache = raw;
       console.log(
-        `[eventsFetcher] Loaded ${cache.events.length} events from disk (fetched ${cache.fetchedAt})`
+        `[eventsFetcher] Loaded ${cache.events?.length ?? 0} events from disk (fetched ${cache.fetchedAt})`
       );
     }
   } catch (err) {
@@ -31,18 +39,59 @@ function saveToDisk() {
   }
 }
 
-async function fetchEvents() {
-  const res = await fetch(EPD_EVENTS_URL, {
-    headers: { "User-Agent": "Mozilla/5.0" },
+function buildBody(currentRows) {
+  const params = new URLSearchParams();
+  params.set("blockId", "1673");
+  params.set("parentBlockId", "76160");
+  params.set("currentRows", String(currentRows));
+  params.set("isSearch", "true");
+  params.set("parameters[distance]", "Any");
+  params.set("parameters[issue-areas][]", "Environmental Conservation");
+  params.set("parameters[solrQuery]", "");
+  return params.toString();
+}
+
+async function fetchOnePage(currentRows) {
+  const res = await fetch(HANDSON_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest",
+      "User-Agent": "Mozilla/5.0",
+      Referer: HANDSON_REFERER,
+    },
+    body: buildBody(currentRows),
   });
-  if (!res.ok) throw new Error(`EPD fetch failed: ${res.status}`);
-  const json = await res.json();
+  if (!res.ok) throw new Error(`HandsOn fetch failed: ${res.status}`);
+  return res.json();
+}
 
-  cache = { events: json.events, fetchedAt: new Date().toISOString() };
+// Flatten the HandsOn payload (grouped by day) into a flat list. The page
+// returns 50 occurrences per request; paginate until we have everything.
+async function fetchEvents() {
+  const all = [];
+  let total = Infinity;
+  let cursor = 0;
+  while (cursor < total) {
+    const page = await fetchOnePage(cursor);
+    total = typeof page.total === "number" ? page.total : 0;
+    const days = page.opportunities || [];
+    let pageCount = 0;
+    for (const day of days) {
+      for (const opp of day.ListingOpportunities || []) {
+        all.push({ ...opp, _dayDate: day.DateOccurrences });
+        pageCount++;
+      }
+    }
+    if (pageCount === 0) break;
+    cursor += pageCount;
+    if (cursor >= total) break;
+  }
+
+  cache = { events: all, fetchedAt: new Date().toISOString() };
   saveToDisk();
-
   console.log(
-    `[eventsFetcher] Fetched ${json.events.length} events at ${cache.fetchedAt}`
+    `[eventsFetcher] Fetched ${all.length} HandsOn HK events at ${cache.fetchedAt}`
   );
 }
 
@@ -55,7 +104,6 @@ function startPolling() {
 
   loadFromDisk();
 
-  // Fetch immediately on startup only if cache is missing or stale (>24h)
   const age = cache.fetchedAt
     ? Date.now() - new Date(cache.fetchedAt).getTime()
     : Infinity;
@@ -72,7 +120,7 @@ function startPolling() {
     });
   }, FETCH_INTERVAL_MS);
 
-  console.log("[eventsFetcher] Polling started (every 24h)");
+  console.log("[eventsFetcher] Polling started (every 6h)");
 }
 
 function stopPolling() {

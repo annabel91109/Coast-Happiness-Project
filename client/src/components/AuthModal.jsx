@@ -24,9 +24,14 @@ export default function AuthModal({ onClose, initialMode = "signin" }) {
       "auth/email-already-in-use": t.auth.errEmailInUse,
       "auth/weak-password": t.auth.errWeakPassword,
       "auth/invalid-email": t.auth.errInvalidEmail,
+      "auth/invalid-credential": t.auth.errWrongPassword,
       "auth/popup-closed-by-user": null,
       "auth/cancelled-popup-request": null,
+      "auth/popup-blocked": null,
+      "auth/account-exists-with-different-credential": t.auth.errEmailInUse,
+      "auth/unauthorized-domain": t.auth.errUnauthorizedDomain,
     };
+    console.error("[Auth] error code:", code);
     return map[code] ?? t.auth.errGeneric;
   }
 

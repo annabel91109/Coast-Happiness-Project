@@ -6,6 +6,9 @@ import { T } from "./i18n";
 import BeachList from "./components/BeachList";
 import BeachMap from "./components/BeachMap";
 import AuthModal from "./components/AuthModal";
+import HostCleanupForm from "./components/HostCleanupForm";
+import CleanupList from "./components/CleanupList";
+import RecyclingMap from "./components/RecyclingMap";
 
 const PERIODS = ["24h", "1w", "2w", "1m"];
 
@@ -26,9 +29,17 @@ function oneMonthAgoStr() {
   return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
 
+const VALID_VIEWS = ["list", "map", "host", "join", "recycling"];
+
 function AppInner() {
-  const [view, setView] = useState("list");
-  const [period, setPeriod] = useState("1m");
+  const [view, setView] = useState(() => {
+    const saved = typeof window !== "undefined" ? window.localStorage.getItem("view") : null;
+    return VALID_VIEWS.includes(saved) ? saved : "list";
+  });
+  useEffect(() => {
+    try { window.localStorage.setItem("view", view); } catch { /* ignore quota/privacy errors */ }
+  }, [view]);
+  const [period, setPeriod] = useState("24h");
   const [customFrom, setCustomFrom] = useState(oneMonthAgoStr);
   const [customTo, setCustomTo] = useState(todayStr);
   const [appliedCustom, setAppliedCustom] = useState(null);
@@ -77,7 +88,11 @@ function AppInner() {
         {/* Brand */}
         <div className="px-4 py-5 border-b border-white/10">
           <div className="flex items-center gap-2 mb-0.5">
-            <span className="text-lg">🌊</span>
+            <img
+              src="/logo.jpg"
+              alt=""
+              className="w-8 h-8 rounded-full object-cover shrink-0"
+            />
             <span className="font-bold text-sm leading-tight">{t.appTitle}</span>
           </div>
         </div>
@@ -111,6 +126,17 @@ function AppInner() {
             >
               <span className="text-base">🤝</span>
               {t.navJoinCleanup}
+            </button>
+            <button
+              onClick={() => { setView("recycling"); setSidebarOpen(false); }}
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 ${
+                view === "recycling"
+                  ? "bg-white/15 text-white font-medium"
+                  : "text-white/70 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <span className="text-base">♻️</span>
+              {t.navRecycling}
             </button>
           </div>
 
@@ -218,7 +244,7 @@ function AppInner() {
             </button>
 
             <h1 className="text-white font-semibold text-sm md:text-base">
-              {view === "host" ? t.navHostCleanup : view === "join" ? t.navJoinCleanup : view === "map" ? t.trashHotspots : t.beachRankings}
+              {view === "host" ? t.navHostCleanup : view === "join" ? t.navJoinCleanup : view === "recycling" ? t.navRecycling : view === "map" ? t.trashHotspots : t.beachRankings}
             </h1>
 
             {!online && (
@@ -241,18 +267,21 @@ function AppInner() {
         <main className="flex-1 overflow-y-auto px-4 py-6">
           <div className="max-w-3xl mx-auto">
             {view === "host" && (
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-[#0d3d47] mb-2">{t.navHostCleanup}</h2>
-                <p className="text-sm text-[#145e6a]">{t.comingSoonHost}</p>
-              </div>
+              <HostCleanupForm
+                beaches={predictions.data?.predictions || []}
+                events={events.data?.events ?? []}
+                onCreated={() => setView("join")}
+              />
             )}
 
             {view === "join" && (
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-semibold text-[#0d3d47] mb-2">{t.navJoinCleanup}</h2>
-                <p className="text-sm text-[#145e6a]">{t.comingSoonJoin}</p>
-              </div>
+              <CleanupList
+                userId={user?.uid}
+                epdEvents={events.data?.events}
+              />
             )}
+
+            {view === "recycling" && <RecyclingMap />}
 
             {(view === "list" || view === "map") && error && (
               <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6">
@@ -343,7 +372,7 @@ function AppInner() {
                   <BeachList
                     predictions={predictions.data.predictions}
                     events={events.data?.events ?? []}
-                    epdUrl={events.data?.epdUrl}
+                    sourceUrl={events.data?.sourceUrl}
                   />
                 ) : (
                   <BeachMap predictions={predictions.data.predictions} />

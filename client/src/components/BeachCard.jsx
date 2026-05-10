@@ -8,10 +8,22 @@ const RISK_STYLES = {
   Low:         { bar: "bg-[#5e9e70]", badge: "bg-[#5e9e70]" },
 };
 
-export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
+// Difficulty 1 (easy) → green, 5 (expert) → deep red. Mirrors RISK_STYLES palette.
+const ACCESS_COLORS = {
+  1: "text-[#5e9e70]",
+  2: "text-[#8cac58]",
+  3: "text-[#c0a040]",
+  4: "text-[#c89090]",
+  5: "text-[#b06060]",
+};
+
+export default function BeachCard({ prediction, rank, events = [], sourceUrl, onSelect }) {
   const { lang } = useLang();
   const t = T[lang];
-  const { beach, nameTc, region, score, riskLevel, windInfo, waveInfo } = prediction;
+  const {
+    beach, nameTc, region, score, riskLevel, accessDifficulty, hikeMinutes, boatOnly,
+    topFactors = [], recentStormBoost = false,
+  } = prediction;
   const beachName = lang === "tc" && nameTc ? nameTc : beach;
   const style = RISK_STYLES[riskLevel] || RISK_STYLES.Low;
   const barPct = (score * 100).toFixed(0);
@@ -26,8 +38,13 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
       <div className={`w-1.5 shrink-0 ${style.bar}`} />
 
       <div className="flex-1 min-w-0">
-        {/* Main content row */}
-        <div className="flex items-center gap-3 px-3 py-3">
+        {/* Main content row — clickable to open detail */}
+        <button
+          type="button"
+          onClick={() => onSelect?.(prediction)}
+          className="w-full text-left flex items-center gap-3 px-3 py-3 hover:bg-[#f5fbfa] transition-colors focus:outline-none focus:bg-[#f5fbfa]"
+          aria-label={`Open details for ${beachName}`}
+        >
         {/* Score thumbnail */}
         <div className="shrink-0 w-12 h-12 flex items-center justify-center">
           <span className="text-lg font-bold leading-none text-black">{index}</span>
@@ -39,18 +56,33 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
           <p className="text-xs text-[#8ab5af] truncate">
             {region ? (t.regions[region] || region) : ""}
           </p>
-          {windInfo && windInfo.length > 0 && (
-            <p className="text-xs text-[#8ab5af] truncate mt-0.5">
-              {windInfo.map((w) => {
-                const station = (lang === "tc" && t.windStations?.[w.station]) || w.station;
-                const dir = (lang === "tc" && t.windDirs?.[w.direction]) || w.direction;
-                return `${station}: ${dir} ${w.speed}`;
-              }).join(" · ")}
+          {accessDifficulty != null && (
+            <p
+              className="text-xs truncate mt-0.5"
+              title={t.access.hints[accessDifficulty]}
+            >
+              <span className={`font-medium ${ACCESS_COLORS[accessDifficulty] || "text-[#145e6a]"}`}>
+                {t.access.levels[accessDifficulty]}
+              </span>
+              <span className="text-[#8ab5af]"> · {"●".repeat(accessDifficulty)}{"○".repeat(5 - accessDifficulty)}</span>
             </p>
           )}
-          {waveInfo?.height != null && (
-            <p className="text-xs text-[#8ab5af] truncate mt-0.5">
-              {t.wave}: {waveInfo.height.toFixed(1)}m{waveInfo.period != null ? ` · ${waveInfo.period.toFixed(0)}s` : ""}
+          {hikeMinutes != null && (
+            <p className="text-xs text-[#8b6f3a] truncate mt-0.5">
+              {t.hikeBadge(hikeMinutes)}
+            </p>
+          )}
+          {boatOnly && (
+            <p className="text-xs text-[#2c6f80] truncate mt-0.5">{t.boatBadge}</p>
+          )}
+          {(riskLevel === "Very High" || riskLevel === "High") &&
+            (topFactors.length > 0 || recentStormBoost) && (
+            <p className="text-xs text-[#5a7a82] truncate mt-0.5">
+              <span className="text-[#8ab5af]">{t.why.label} · </span>
+              {[
+                ...topFactors.map((k) => t.why[k]).filter(Boolean),
+                recentStormBoost ? t.why.stormBoost : null,
+              ].filter(Boolean).join(" + ")}
             </p>
           )}
         </div>
@@ -64,16 +96,16 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
           </span>
           <span className="text-xs text-[#8ab5af] font-medium">#{rank}</span>
         </div>
-      </div>
+        </button>
 
       {/* Events */}
       {events.length > 0 && (
         <div className="px-3 py-3 border-t border-gray-100 space-y-1">
           {upcoming.map((e, i) => (
-            <EventRow key={i} event={e} lang={lang} epdUrl={epdUrl} upcoming />
+            <EventRow key={i} event={e} lang={lang} sourceUrl={sourceUrl} upcoming />
           ))}
           {past.map((e, i) => (
-            <EventRow key={i} event={e} lang={lang} epdUrl={epdUrl} upcoming={false} />
+            <EventRow key={i} event={e} lang={lang} sourceUrl={sourceUrl} upcoming={false} />
           ))}
         </div>
       )}
@@ -82,7 +114,7 @@ export default function BeachCard({ prediction, rank, events = [], epdUrl }) {
   );
 }
 
-function EventRow({ event, lang, epdUrl, upcoming }) {
+function EventRow({ event, lang, sourceUrl, upcoming }) {
   const dateStr = new Date(event.date).toLocaleDateString(
     lang === "tc" ? "zh-HK" : "en-HK",
     { month: "short", day: "numeric" }
@@ -96,7 +128,7 @@ function EventRow({ event, lang, epdUrl, upcoming }) {
       </span>
       <span className="text-black truncate">{title}</span>
       <a
-        href={event.link || epdUrl}
+        href={event.link || sourceUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="shrink-0 text-[#145e6a] hover:underline ml-auto"

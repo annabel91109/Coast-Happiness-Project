@@ -1,0 +1,164 @@
+{
+  "regions": {
+    "HK Island": {
+      "transport": {
+        "mtr": {
+          "en": "Take MTR South Island Line to Wong Chuk Hang or Island Line to Shau Kei Wan, then transfer to local bus.",
+          "tc": "乘搭港鐵南港島綫至黃竹坑站,或港島綫至筲箕灣站,再轉乘巴士前往。"
+        },
+        "bus": {
+          "en": "KMB/Citybus routes 6, 6A, 6X, 66, 260 serve the southern beaches; routes 9, 309 serve Shek O and Big Wave Bay.",
+          "tc": "九巴/城巴 6、6A、6X、66、260 號線可達港島南各泳灘;9、309 號線可達石澳及大浪灣。"
+        },
+        "ferry": {
+          "en": "Limited — Stanley can be reached by kaito from Aberdeen on weekends.",
+          "tc": "選擇有限 — 週末可由香港仔乘搭街渡前往赤柱。"
+        },
+        "car": {
+          "en": "Paid parking available at Repulse Bay, Stanley, Shek O. Arrive before 10am on weekends.",
+          "tc": "淺水灣、赤柱、石澳設有收費停車場。週末請於上午十時前到達。"
+        }
+      },
+      "recycling": [
+        {
+          "name": { "en": "GREEN@SOUTHERN (Aberdeen)", "tc": "綠在南區(香港仔)" },
+          "address": { "en": "Wai Fung Street, Aberdeen", "tc": "香港仔惠風街" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        },
+        {
+          "name": { "en": "GREEN@EASTERN (Chai Wan)", "tc": "綠在東區(柴灣)" },
+          "address": { "en": "Sheung On Street, Chai Wan", "tc": "柴灣常安街" },
+          "materials": { "en": "Plastic, glass, metal, paper, small electronics", "tc": "塑膠、玻璃、金屬、紙張、小型電器" }
+        }
+      ]
+    },
+    "Kowloon": {
+      "transport": {
+        "mtr": {
+          "en": "MTR Tsuen Wan / Kwun Tong lines connect to most Kowloon waterfronts; transfer to minibus for coastal access.",
+          "tc": "港鐵荃灣綫及觀塘綫連接九龍大部份海濱;轉乘專線小巴前往沿岸位置。"
+        },
+        "bus": {
+          "en": "KMB routes 2, 6, 11 serve Kowloon waterfront areas.",
+          "tc": "九巴 2、6、11 號線途經九龍海濱區。"
+        },
+        "ferry": {
+          "en": "Star Ferry connects Tsim Sha Tsui to HK Island.",
+          "tc": "天星小輪往返尖沙咀及港島。"
+        },
+        "car": {
+          "en": "Limited beach parking in Kowloon; prefer public transport.",
+          "tc": "九龍泳灘附近停車位有限,建議使用公共交通工具。"
+        }
+      },
+      "recycling": [
+        {
+          "name": { "en": "GREEN@KWUN TONG", "tc": "綠在觀塘" },
+          "address": { "en": "Hoi Bun Road Park, Kwun Tong", "tc": "觀塘海濱道公園" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        },
+        {
+          "name": { "en": "GREEN@SHAM SHUI PO", "tc": "綠在深水埗" },
+          "address": { "en": "Tung Chau Street, Sham Shui Po", "tc": "深水埗通州街" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        }
+      ]
+    },
+    "NT": {
+      "transport": {
+        "mtr": {
+          "en": "MTR East Rail / Tuen Ma lines to Tai Po Market, Tai Wai, or Tuen Mun, then transfer to green minibus.",
+          "tc": "乘搭港鐵東鐵綫或屯馬綫前往大埔墟、大圍或屯門站,再轉乘綠色專線小巴。"
+        },
+        "bus": {
+          "en": "KMB routes 75K, 275R serve Plover Cove; 94 and 96R serve Sai Kung beaches.",
+          "tc": "九巴 75K 及 275R 號線往船灣淡水湖;94、96R 號線往西貢各泳灘。"
+        },
+        "ferry": {
+          "en": "Sai Kung pier kaito serves remote beaches like Sharp Island and Half Moon Bay.",
+          "tc": "西貢碼頭街渡可達橋咀洲及廈門灣等偏遠泳灘。"
+        },
+        "car": {
+          "en": "Parking at Sai Kung town, Clearwater Bay Country Park, Pak Tam Chung. Fills up early on weekends.",
+          "tc": "西貢市中心、清水灣郊野公園及北潭涌均設有停車場,週末很快爆滿。"
+        }
+      },
+      "recycling": [
+        {
+          "name": { "en": "GREEN@SAI KUNG", "tc": "綠在西貢" },
+          "address": { "en": "Sai Kung Waterfront Park", "tc": "西貢海濱公園" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        },
+        {
+          "name": { "en": "GREEN@TAI PO", "tc": "綠在大埔" },
+          "address": { "en": "On Chee Road, Tai Po", "tc": "大埔安慈路" },
+          "materials": { "en": "Plastic, glass, metal, paper, small electronics", "tc": "塑膠、玻璃、金屬、紙張、小型電器" }
+        },
+        {
+          "name": { "en": "EcoPark (Tuen Mun)", "tc": "環保園(屯門)" },
+          "address": { "en": "Lung Mun Road, Tuen Mun", "tc": "屯門龍門路" },
+          "materials": { "en": "Plastic, glass, metal, paper, WEEE, wood", "tc": "塑膠、玻璃、金屬、紙張、廢電器電子產品、木材" }
+        }
+      ]
+    },
+    "Islands": {
+      "transport": {
+        "mtr": {
+          "en": "MTR Tung Chung Line to Tung Chung for Lantau; transfer to bus 3M, 11, 23 for beaches.",
+          "tc": "港鐵東涌綫至東涌站前往大嶼山,再轉乘 3M、11 或 23 號巴士。"
+        },
+        "bus": {
+          "en": "New Lantao Bus 1, 2, 3M, 11 for Lantau beaches; no bus access on Lamma or Po Toi.",
+          "tc": "新大嶼山巴士 1、2、3M、11 號線往大嶼山泳灘;南丫島及蒲台島沒有巴士。"
+        },
+        "ferry": {
+          "en": "Outlying Islands ferries from Central Pier 4 (Lamma), 5 (Cheung Chau), 6 (Mui Wo/Lantau).",
+          "tc": "中環 4 號碼頭往南丫島、5 號往長洲、6 號往梅窩(大嶼山)的離島渡輪。"
+        },
+        "car": {
+          "en": "No private cars allowed on Lamma, Cheung Chau, or Peng Chau. Limited parking on Lantau.",
+          "tc": "南丫島、長洲及坪洲不准私家車進入。大嶼山停車位有限。"
+        }
+      },
+      "recycling": [
+        {
+          "name": { "en": "GREEN@ISLANDS (Mui Wo)", "tc": "綠在離島(梅窩)" },
+          "address": { "en": "Mui Wo Ferry Pier, Lantau", "tc": "大嶼山梅窩渡輪碼頭" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        },
+        {
+          "name": { "en": "Cheung Chau Recycling Point", "tc": "長洲回收點" },
+          "address": { "en": "Cheung Chau Municipal Services Building", "tc": "長洲市政大廈" },
+          "materials": { "en": "Plastic, glass, metal, paper", "tc": "塑膠、玻璃、金屬、紙張" }
+        }
+      ]
+    }
+  },
+  "baseChecklist": [
+    { "item": { "en": "Reusable gloves", "tc": "可重用手套" }, "perPerson": true },
+    { "item": { "en": "Trash bags (large, durable)", "tc": "垃圾袋(大型、耐用)" }, "perGroup": true, "qty": "2 per 5 people" },
+    { "item": { "en": "Bucket or bag for recyclables (separate)", "tc": "獨立回收物收集桶或袋" }, "perGroup": true },
+    { "item": { "en": "Tongs or pickers", "tc": "夾子或垃圾鉗" }, "perGroup": true, "qty": "1 per 2 people" },
+    { "item": { "en": "First-aid kit", "tc": "急救包" }, "perGroup": true },
+    { "item": { "en": "Drinking water", "tc": "飲用水" }, "perPerson": true, "qty": "1.5L per person" },
+    { "item": { "en": "Sun hat & sunscreen (SPF 50+)", "tc": "太陽帽及防曬霜(SPF 50+)" }, "perPerson": true },
+    { "item": { "en": "Closed-toe shoes (reef shoes for rocky beaches)", "tc": "包頭鞋(石灘建議溯溪鞋)" }, "perPerson": true },
+    { "item": { "en": "Scale or bag to weigh collected trash", "tc": "磅或袋以稱量收集垃圾" }, "perGroup": true },
+    { "item": { "en": "Phone with emergency contacts saved", "tc": "已儲存緊急聯絡的手機" }, "perPerson": true }
+  ],
+  "safetyNotes": {
+    "gazetted": [
+      { "en": "Lifeguards on duty during swimming season (Apr–Oct)", "tc": "泳季(四月至十月)有救生員當值" },
+      { "en": "Public toilets, showers and shark nets available", "tc": "設有公廁、淋浴設施及防鯊網" },
+      { "en": "Follow LCSD rules — no open fires, no glass", "tc": "遵守康文署規則 — 不准生火、不准攜帶玻璃" }
+    ],
+    "nonGazetted": [
+      { "en": "No lifeguards — do not swim in strong currents", "tc": "沒有救生員 — 切勿於急流游泳" },
+      { "en": "No public toilets — plan ahead", "tc": "沒有公廁 — 請預先安排" },
+      { "en": "Carry all trash out; no bins on site", "tc": "場內無垃圾桶,請自行帶走所有垃圾" },
+      { "en": "Tell someone your plan and expected return time", "tc": "請告知他人行程及預計返回時間" },
+      { "en": "Beware of slippery rocks, sharp shells, and jellyfish", "tc": "小心濕滑岩石、尖銳貝殼及水母" },
+      { "en": "Check tide times before arrival — some beaches disappear at high tide", "tc": "出發前查閱潮汐時間 — 部份沙灘漲潮時會被淹沒" }
+    ]
+  }
+}

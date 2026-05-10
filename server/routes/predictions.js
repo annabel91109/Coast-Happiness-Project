@@ -78,7 +78,9 @@ router.get("/", async (req, res) => {
       });
     }
 
-    // Default: current/live predictions
+    // Default: current/live predictions, with the past 72h of wind folded
+    // in via decay-weighted vector averaging. Captures post-storm trash
+    // accumulation that the latest hour alone misses.
     const [wind, marine] = await Promise.all([
       getWindData(),
       getMarineData().catch(() => null),
@@ -87,7 +89,9 @@ router.get("/", async (req, res) => {
       return res.status(503).json({ error: "Wind data not yet available" });
     }
 
-    const predictions = predict(wind.stations, marine);
+    const now = Date.now();
+    const recentSnapshots = getSnapshotsByRange(now - 72 * 60 * 60 * 1000, now);
+    const predictions = predict(wind.stations, marine, { recentSnapshots, now });
 
     res.json({
       predictions,

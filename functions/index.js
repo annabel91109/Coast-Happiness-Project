@@ -1,19 +1,22 @@
 const { initializeApp } = require("firebase-admin/app");
+const { getFirestore } = require("firebase-admin/firestore");
 const { onRequest } = require("firebase-functions/v2/https");
 const { onSchedule } = require("firebase-functions/v2/scheduler");
 const express = require("express");
 const windRoutes = require("./routes/wind");
 const predictionRoutes = require("./routes/predictions");
 const eventsRoutes = require("./routes/events");
+const cleanupRoutes = require("./routes/cleanups");
 
 initializeApp();
+getFirestore("default").settings({ ignoreUndefinedProperties: true });
 
 const app = express();
 
 app.use((req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.set("Access-Control-Allow-Headers", "Content-Type");
+  res.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") return res.status(204).send("");
   next();
 });
@@ -27,6 +30,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/wind", windRoutes);
 app.use("/api/predictions", predictionRoutes);
 app.use("/api/events", eventsRoutes);
+app.use("/api/cleanups", cleanupRoutes);
 
 // Manual trigger to collect a wind snapshot on demand
 app.post("/api/collect-wind", async (req, res) => {

@@ -3,10 +3,10 @@ import { useLang } from "../LangContext";
 import { T } from "../i18n";
 
 const RISK_COLORS = {
-  "Very High": "#b06060",
-  High: "#c89090",
-  Moderate: "#c0a040",
-  Low: "#5e9e70",
+  "Very High": "#dc2626",
+  High: "#f97316",
+  Moderate: "#eab308",
+  Low: "#22c55e",
 };
 
 export default function BeachMap({ predictions }) {
@@ -17,12 +17,14 @@ export default function BeachMap({ predictions }) {
     <MapContainer
       center={[22.3, 114.15]}
       zoom={11}
-      style={{ width: "100%" }}
-      className="h-[60vh] min-h-[300px] rounded-lg shadow-sm"
+      style={{ height: "500px", width: "100%" }}
+      className="rounded-lg shadow-sm"
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        subdomains="abcd"
+        maxZoom={19}
       />
       {predictions.map((p) => {
         const color = RISK_COLORS[p.riskLevel] || RISK_COLORS.Low;

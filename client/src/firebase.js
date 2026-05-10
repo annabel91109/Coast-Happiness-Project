@@ -11,12 +11,13 @@ import { getAuth, GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 //    - Google
 //    - Apple (requires Apple Developer account)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBpeHjDH-S9zckNNajQ76AgFRertz_1glk",
+  authDomain: "coast-happiness-project.firebaseapp.com",
+  projectId: "coast-happiness-project",
+  storageBucket: "coast-happiness-project.firebasestorage.app",
+  messagingSenderId: "290674681777",
+  appId: "1:290674681777:web:4333138fb1355dc24a7f90",
+  measurementId: "G-P6HT3W2231",
 };
 
 const app = initializeApp(firebaseConfig);

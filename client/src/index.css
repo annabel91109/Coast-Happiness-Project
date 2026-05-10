@@ -8,3 +8,15 @@ body {
 .leaflet-container img {
   max-width: none;
 }
+
+/* Carto Voyager is naturally vivid. Slight brightness dim takes the
+   edge off without graying it back out. */
+.leaflet-tile {
+  filter: brightness(0.92) saturate(1.05);
+}
+
+/* Match the site's body font so popups and attribution don't fall back
+   to the browser default sans-serif. */
+.leaflet-container {
+  font-family: 'Ubuntu', sans-serif;
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "central-western",
+    "name": { "en": "GREEN@CENTRAL & WESTERN", "tc": "綠在中西區" },
+    "address": { "en": "Forbes Street Temporary Recreation Ground, Kennedy Town", "tc": "堅尼地城福斯街臨時遊樂場" },
+    "district": { "en": "Central & Western", "tc": "中西區" },
+    "lat": 22.2843,
+    "lng": 114.1267,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "wan-chai",
+    "name": { "en": "GREEN@WAN CHAI", "tc": "綠在灣仔" },
+    "address": { "en": "Junction of Tonnochy Road and Hennessy Road, Wan Chai", "tc": "灣仔杜老誌道與軒尼詩道交界" },
+    "district": { "en": "Wan Chai", "tc": "灣仔" },
+    "lat": 22.2790,
+    "lng": 114.1759,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "eastern",
+    "name": { "en": "GREEN@EASTERN", "tc": "綠在東區" },
+    "address": { "en": "Sheung On Street Temporary Recreation Ground, Chai Wan", "tc": "柴灣常安街臨時遊樂場" },
+    "district": { "en": "Eastern", "tc": "東區" },
+    "lat": 22.2697,
+    "lng": 114.2367,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "southern",
+    "name": { "en": "GREEN@SOUTHERN", "tc": "綠在南區" },
+    "address": { "en": "Wai Fung Street, Aberdeen", "tc": "香港仔惠風街" },
+    "district": { "en": "Southern", "tc": "南區" },
+    "lat": 22.2477,
+    "lng": 114.1545,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "yau-tsim-mong",
+    "name": { "en": "GREEN@YAU TSIM MONG", "tc": "綠在油尖旺" },
+    "address": { "en": "Junction of Yan Fung Street and Ferry Street, Yau Ma Tei", "tc": "油麻地欣豐街與渡船街交界" },
+    "district": { "en": "Yau Tsim Mong", "tc": "油尖旺" },
+    "lat": 22.3076,
+    "lng": 114.1689,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "sham-shui-po",
+    "name": { "en": "GREEN@SHAM SHUI PO", "tc": "綠在深水埗" },
+    "address": { "en": "Tung Chau Street Park, Sham Shui Po", "tc": "深水埗通州街公園" },
+    "district": { "en": "Sham Shui Po", "tc": "深水埗" },
+    "lat": 22.3326,
+    "lng": 114.1535,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "kowloon-city",
+    "name": { "en": "GREEN@KOWLOON CITY", "tc": "綠在九龍城" },
+    "address": { "en": "Sheung Heung Road Playground, To Kwa Wan", "tc": "土瓜灣上鄉道遊樂場" },
+    "district": { "en": "Kowloon City", "tc": "九龍城" },
+    "lat": 22.3160,
+    "lng": 114.1864,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "wong-tai-sin",
+    "name": { "en": "GREEN@WONG TAI SIN", "tc": "綠在黃大仙" },
+    "address": { "en": "Tseuk Luk Street Sitting-out Area, San Po Kong", "tc": "新蒲崗爵祿街休憩處" },
+    "district": { "en": "Wong Tai Sin", "tc": "黃大仙" },
+    "lat": 22.3325,
+    "lng": 114.1980,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "kwun-tong",
+    "name": { "en": "GREEN@KWUN TONG", "tc": "綠在觀塘" },
+    "address": { "en": "Hoi Bun Road Park, Kwun Tong", "tc": "觀塘海濱道公園" },
+    "district": { "en": "Kwun Tong", "tc": "觀塘" },
+    "lat": 22.3120,
+    "lng": 114.2208,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "kwai-tsing",
+    "name": { "en": "GREEN@KWAI TSING", "tc": "綠在葵青" },
+    "address": { "en": "Tai Ha Street, Kwai Chung (next to Kwai Chung Sports Ground)", "tc": "葵涌大河街(近葵涌運動場)" },
+    "district": { "en": "Kwai Tsing", "tc": "葵青" },
+    "lat": 22.3672,
+    "lng": 114.1295,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "tsuen-wan",
+    "name": { "en": "GREEN@TSUEN WAN", "tc": "綠在荃灣" },
+    "address": { "en": "Yeung Uk Road Sports Centre, Tsuen Wan", "tc": "荃灣楊屋道體育館" },
+    "district": { "en": "Tsuen Wan", "tc": "荃灣" },
+    "lat": 22.3704,
+    "lng": 114.1144,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "tuen-mun",
+    "name": { "en": "GREEN@TUEN MUN", "tc": "綠在屯門" },
+    "address": { "en": "Tuen Mun Park, Tuen Mun", "tc": "屯門公園" },
+    "district": { "en": "Tuen Mun", "tc": "屯門" },
+    "lat": 22.3925,
+    "lng": 113.9752,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "yuen-long",
+    "name": { "en": "GREEN@YUEN LONG", "tc": "綠在元朗" },
+    "address": { "en": "Yuen Long Park, Yuen Long", "tc": "元朗公園" },
+    "district": { "en": "Yuen Long", "tc": "元朗" },
+    "lat": 22.4470,
+    "lng": 114.0227,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "north",
+    "name": { "en": "GREEN@NORTH", "tc": "綠在北區" },
+    "address": { "en": "North District Park, Sheung Shui", "tc": "上水北區公園" },
+    "district": { "en": "North", "tc": "北區" },
+    "lat": 22.5052,
+    "lng": 114.1305,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "tai-po",
+    "name": { "en": "GREEN@TAI PO", "tc": "綠在大埔" },
+    "address": { "en": "On Chee Road, Tai Po", "tc": "大埔安慈路" },
+    "district": { "en": "Tai Po", "tc": "大埔" },
+    "lat": 22.4517,
+    "lng": 114.1672,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "sha-tin",
+    "name": { "en": "GREEN@SHA TIN", "tc": "綠在沙田" },
+    "address": { "en": "Sha Kok Street, Sha Tin (near Sha Kok Estate)", "tc": "沙田沙角街(近沙角邨)" },
+    "district": { "en": "Sha Tin", "tc": "沙田" },
+    "lat": 22.3796,
+    "lng": 114.2008,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "sai-kung",
+    "name": { "en": "GREEN@SAI KUNG", "tc": "綠在西貢" },
+    "address": { "en": "Sai Kung Waterfront Park, Sai Kung", "tc": "西貢海濱公園" },
+    "district": { "en": "Sai Kung", "tc": "西貢" },
+    "lat": 22.3814,
+    "lng": 114.2710,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  },
+  {
+    "id": "islands",
+    "name": { "en": "GREEN@ISLANDS", "tc": "綠在離島" },
+    "address": { "en": "Mui Wo Ferry Pier area, Lantau", "tc": "大嶼山梅窩渡輪碼頭一帶" },
+    "district": { "en": "Islands", "tc": "離島" },
+    "lat": 22.2649,
+    "lng": 113.9988,
+    "materials": { "en": "Plastic, glass, metal, paper, small electronics, fluorescent lamps", "tc": "塑膠、玻璃、金屬、紙張、小型電器、慳電膽光管" }
+  }
+]

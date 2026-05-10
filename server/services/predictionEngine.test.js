@@ -1,4 +1,5 @@
-const { predict, compassToDegrees, calcOnshoreScore, getRiskLevel } = require("./predictionEngine");
+const { predict, compassToDegrees, calcOnshoreScore, getRiskLevel, smoothStations, degreesToCompass } = require("./predictionEngine");
+const beaches = require("../data/beaches.json");
 
 describe("compassToDegrees", () => {
   test("converts cardinal directions", () => {
@@ -73,7 +74,7 @@ describe("predict", () => {
 
   test("returns predictions for all beaches", () => {
     const results = predict(mockStations);
-    expect(results).toHaveLength(9);
+    expect(results).toHaveLength(beaches.length);
   });
 
   test("results are sorted by score descending", () => {
@@ -102,11 +103,101 @@ describe("predict", () => {
     expect(repulse.score).toBeGreaterThan(0.3);
   });
 
-  test("east-facing beaches score low with southerly wind", () => {
+  test("east-facing beaches score lower than south-facing with southerly wind", () => {
     const results = predict(mockStations);
     const bigWave = results.find((r) => r.beach === "Big Wave Bay");
-    // East-facing (90) with south wind (180) = 90 degrees off = crosswind
-    expect(bigWave.score).toBeLessThan(0.15);
+    const repulse = results.find((r) => r.beach === "Repulse Bay");
+    // East-facing crosswind should never beat a direct onshore south-facing beach.
+    expect(bigWave.score).toBeLessThan(repulse.score);
+  });
+
+  test("each prediction includes topFactors", () => {
+    const results = predict(mockStations);
+    const repulse = results.find((r) => r.beach === "Repulse Bay");
+    expect(Array.isArray(repulse.topFactors)).toBe(true);
+    expect(repulse.topFactors.length).toBeGreaterThan(0);
+    expect(repulse.recentStormBoost).toBe(false);
+  });
+});
+
+describe("smoothStations", () => {
+  test("opposing winds across snapshots cancel via vector averaging", () => {
+    // 30 km/h east + 30 km/h west, equal weight, should collapse to ~0 km/h.
+    const now = 100_000_000;
+    const current = [{ station: "Test", direction: "East", speed: 30, gust: null }];
+    const recent = [
+      { timestamp: now - 1000, stations: [{ station: "Test", direction: "West", speed: 30, gust: null }] },
+    ];
+    const smoothed = smoothStations(current, recent, now);
+    expect(smoothed).toHaveLength(1);
+    expect(smoothed[0].speed).toBeLessThan(1);
+  });
+
+  test("older snapshots receive less weight than newer", () => {
+    const now = 100_000_000;
+    const current = [{ station: "Test", direction: "South", speed: 5, gust: null }];
+    // 60h ago: a 50 km/h south wind. Should still bump speed above 5 but not to 50.
+    const recent = [
+      { timestamp: now - 60 * 60 * 60 * 1000, stations: [{ station: "Test", direction: "South", speed: 50, gust: null }] },
+    ];
+    const smoothed = smoothStations(current, recent, now);
+    expect(smoothed[0].speed).toBeGreaterThan(5);
+    expect(smoothed[0].speed).toBeLessThan(20);
+  });
+
+  test("snapshots older than 72h are dropped", () => {
+    const now = 100_000_000;
+    const current = [{ station: "Test", direction: "South", speed: 10, gust: null }];
+    const recent = [
+      { timestamp: now - 100 * 60 * 60 * 1000, stations: [{ station: "Test", direction: "South", speed: 100, gust: null }] },
+    ];
+    const smoothed = smoothStations(current, recent, now);
+    expect(smoothed[0].speed).toBeCloseTo(10, 0);
+  });
+});
+
+describe("predict with smoothing", () => {
+  const south = [
+    { station: "Stanley", direction: "South", speed: 5, gust: null },
+    { station: "Wong Chuk Hang", direction: "South", speed: 5, gust: null },
+  ];
+  const stormSnapshots = [
+    {
+      timestamp: Date.now() - 6 * 60 * 60 * 1000,
+      stations: [
+        { station: "Stanley", direction: "South", speed: 40, gust: 55 },
+        { station: "Wong Chuk Hang", direction: "South", speed: 40, gust: 55 },
+      ],
+    },
+  ];
+
+  test("recent storm boost flag fires when past wind exceeded current", () => {
+    const results = predict(south, null, { recentSnapshots: stormSnapshots });
+    const repulse = results.find((r) => r.beach === "Repulse Bay");
+    expect(repulse.recentStormBoost).toBe(true);
+  });
+
+  test("smoothed prediction beats unsmoothed for the same calm-after-storm scenario", () => {
+    const calm = predict(south).find((r) => r.beach === "Repulse Bay");
+    const smoothed = predict(south, null, { recentSnapshots: stormSnapshots })
+      .find((r) => r.beach === "Repulse Bay");
+    expect(smoothed.score).toBeGreaterThan(calm.score);
+  });
+});
+
+describe("degreesToCompass", () => {
+  test("round-trips through compassToDegrees", () => {
+    for (const compass of ["North", "East", "South", "West", "Northeast"]) {
+      const deg = compassToDegrees(compass);
+      expect(degreesToCompass(deg)).toBe(compass);
+    }
+  });
+
+  test("snaps to nearest 22.5° increment", () => {
+    expect(degreesToCompass(0)).toBe("North");
+    expect(degreesToCompass(45)).toBe("Northeast");
+    expect(degreesToCompass(360)).toBe("North");
+    expect(degreesToCompass(-1)).toBe("North");
   });
 
   test("handles stations with calm/null wind", () => {
