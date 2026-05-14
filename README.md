@@ -1,2 +1,2 @@
 # Coast-Happiness-Project
-A web app to help users plan beach cleanups. Using live information from HKO Open Data API, the app predicts which beaches are more likely to receive more recent debris, allowing users to choose beaches to hold cleanups more conveniently and effectively. It also includes a game-like UI to encourage users to join and plan cleanups.
+A web app to help users plan beach cleanups. Using live data from the HKO Open Data API, the app predicts which beaches are more likely to receive recent debris, allowing users to select beaches that are convenient for them and hold cleanups more easily. It also facilitates users in joining and creating cleanups by providing direct links to volunteer platforms and recommending cleanup locations based on user input.
