@@ -1,6 +1,7 @@
-import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { MapContainer, CircleMarker, Popup } from "react-leaflet";
 import { useLang } from "../LangContext";
 import { T } from "../i18n";
+import LangAwareTileLayer from "./LangAwareTileLayer";
 
 const RISK_COLORS = {
   "Very High": "#dc2626",
@@ -20,12 +21,7 @@ export default function BeachMap({ predictions }) {
       style={{ height: "500px", width: "100%" }}
       className="rounded-lg shadow-sm"
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-        subdomains="abcd"
-        maxZoom={19}
-      />
+      <LangAwareTileLayer />
       {predictions.map((p) => {
         const color = RISK_COLORS[p.riskLevel] || RISK_COLORS.Low;
         const radius = 8 + p.score * 16;

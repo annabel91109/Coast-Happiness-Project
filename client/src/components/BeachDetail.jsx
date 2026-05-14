@@ -176,7 +176,7 @@ export default function BeachDetail({ prediction, onClose }) {
               <span className="text-base leading-none">🥾</span>
               <div className="text-xs text-[#0d3d47] flex-1 min-w-0">
                 <div className="font-semibold text-[#8b6f3a]">
-                  {t.beachDetail.hikeRequired} · {hikeMinutes} min
+                  {t.beachDetail.hikeRequired} · {hikeMinutes} {t.minutes}
                 </div>
                 <div className="mt-0.5 text-[#5a7d80]">
                   {t.beachDetail.hikeOneWay(hikeMinutes)}

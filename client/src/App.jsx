@@ -56,6 +56,16 @@ function AppInner() {
   const predictions = useApi(apiUrl);
   const events = useApi("/api/events");
 
+  // Entries flagged isBeach:false (Po Chu Tam, Sha Lo Wan, etc.) are
+  // real trash-accumulation hotspots but not swim beaches — they
+  // shouldn't show in beach rankings, map markers, or the host wizard.
+  // We still want their scores available for any future "hotspots"
+  // view, so filter at the consumer level rather than dropping the
+  // data outright.
+  const beachPredictions = (predictions.data?.predictions || []).filter(
+    (p) => p.isBeach !== false
+  );
+
   const loading = predictions.loading;
   const error = predictions.error;
 
@@ -268,7 +278,7 @@ function AppInner() {
           <div className="max-w-3xl mx-auto">
             {view === "host" && (
               <HostCleanupForm
-                beaches={predictions.data?.predictions || []}
+                beaches={beachPredictions}
                 events={events.data?.events ?? []}
                 onCreated={() => setView("join")}
               />
@@ -370,12 +380,12 @@ function AppInner() {
 
                 {view === "list" ? (
                   <BeachList
-                    predictions={predictions.data.predictions}
+                    predictions={beachPredictions}
                     events={events.data?.events ?? []}
                     sourceUrl={events.data?.sourceUrl}
                   />
                 ) : (
-                  <BeachMap predictions={predictions.data.predictions} />
+                  <BeachMap predictions={beachPredictions} />
                 )}
                 <p className="text-xs text-[#145e6a] mt-4 text-center">
                   {t.generatedAt}{" "}

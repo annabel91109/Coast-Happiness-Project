@@ -6,6 +6,11 @@ const router = express.Router();
 
 const beaches = require(path.join(__dirname, "../data/beaches.json"));
 
+const QUALIFIER_PREFIXES = new Set([
+  "lower", "upper", "old", "new", "north", "south", "east", "west",
+  "main", "big", "small", "first", "second", "third",
+]);
+
 function buildBeachKeys(name) {
   const stripped = name
     .replace(/\s*\([^)]*\)/g, "")
@@ -17,6 +22,13 @@ function buildBeachKeys(name) {
   const tokens = noSuffix.split(/\s+/).filter(Boolean);
   for (let i = 2; i <= tokens.length; i++) {
     keys.add(tokens.slice(0, i).join(" "));
+  }
+  if (tokens.length >= 2 && QUALIFIER_PREFIXES.has(tokens[0].toLowerCase())) {
+    const tail = tokens.slice(1);
+    keys.add(tail.join(" "));
+    for (let i = 2; i < tail.length; i++) {
+      keys.add(tail.slice(0, i).join(" "));
+    }
   }
   return [...keys]
     .map((k) => k.toLowerCase())
@@ -61,6 +73,18 @@ function isJoinable(opp) {
   return true;
 }
 
+// HandsOn HK's "environment" category bundles cleanups together with soap
+// recycling, secondhand clothing sorts, and reforestation. Only the
+// shoreline/trail cleanups belong on our Join a Cleanup list (and feed
+// into the host-wizard dedup), so gate on a "clean" / 清潔 / 清理 keyword.
+function isCleanupEvent(title) {
+  if (!title) return false;
+  const en = String(title).toLowerCase();
+  if (/\bclean(?:up|ing|-up)?\b/.test(en)) return true;
+  if (/清潔|清理/.test(String(title))) return true;
+  return false;
+}
+
 router.get("/", async (req, res) => {
   try {
     const { events, fetchedAt } = await getCachedEvents();
@@ -72,6 +96,7 @@ router.get("/", async (req, res) => {
     if (isNaN(refDate)) return res.status(400).json({ error: "Invalid date" });
 
     const formatted = events
+      .filter((opp) => isCleanupEvent(opp.Title))
       .map((opp) => {
         const dateIso = parseEventDateTime(opp);
         if (!dateIso) return null;

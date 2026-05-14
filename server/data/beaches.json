@@ -16,8 +16,8 @@
     "bayFactor": 0.32,
     "historicalWeight": 0.4,
     "accessDifficulty": 2,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "ferry",
+    "hikeGrade": "flat",
     "debris": {
       "cleaningFrequency": "Many times a day 每日多次",
       "transportNotes": "Ferry (Central to Cheung Chau) 小輪(中環至長洲)",
@@ -69,7 +69,7 @@
     "bayFactor": 0.27,
     "historicalWeight": 0.4,
     "accessDifficulty": 3,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "No",
@@ -95,7 +95,7 @@
     "bayFactor": 0.28,
     "historicalWeight": 0.4,
     "accessDifficulty": 3,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "No",
@@ -121,7 +121,7 @@
     "bayFactor": 0.31,
     "historicalWeight": 0.4,
     "accessDifficulty": 3,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "transportNotes": "Ferry (Central to Cheung Chau) 小輪(中環至長洲)"
@@ -143,9 +143,9 @@
       "Waglan Island"
     ],
     "historicalWeight": 0.3,
-    "accessDifficulty": 3,
+    "accessDifficulty": 1,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "flat",
     "placeId": "ChIJw7z61xsCBDQR2nJlmttrx2o",
     "debris": {
       "cleaningFrequency": "Many times a day",
@@ -206,59 +206,6 @@
       "difficultyNote": "Low (Age group: >8yrs old)",
       "transportNotes": "Bus 6, 6A, 260",
       "coastalLength": "~1,400m"
-    }
-  },
-  {
-    "name": "Hairpin Beach",
-    "nameTc": "夏萍灣泳灘",
-    "region": "HK Island",
-    "lat": 22.2240233,
-    "lng": 114.2126923,
-    "gazetted": true,
-    "isBeach": true,
-    "orientation": 175,
-    "exposure": 0.55,
-    "bayFactor": 0.4,
-    "nearestStations": [
-      "Stanley",
-      "Wong Chuk Hang"
-    ],
-    "historicalWeight": 0.75,
-    "accessDifficulty": 3,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "placeId": "ChIJRxV-pnKqBjQRJxFxJrVqQ-w",
-    "debris": {
-      "cleaningFrequency": "Many times a day",
-      "transportNotes": "Bus 巴士: 314 Minibus 小巴: 16A, 40",
-      "difficultyNote": "Low (Age group: 8 years old) 低難度 (年齡: 8歲以上)",
-      "coastalLength": "217m"
-    }
-  },
-  {
-    "name": "Lei Yue Mun natural rocky shore",
-    "nameTc": "鯉魚門",
-    "region": "HK Island",
-    "lat": 22.288165624481056,
-    "lng": 114.23673306126148,
-    "gazetted": false,
-    "isBeach": true,
-    "orientation": 127.6,
-    "nearestStations": [
-      "Tseung Kwan O",
-      "Sai Kung"
-    ],
-    "exposure": 0.81,
-    "bayFactor": 0.18,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "No",
-      "transportNotes": "Bus 巴士 14C; Minibus 小巴 24M",
-      "difficultyNote": "High (Age group: >18 years old) 高難度 (年齡: 18歲以上)",
-      "coastalLength": "950m"
     }
   },
   {
@@ -341,6 +288,27 @@
     }
   },
   {
+    "name": "Sandy Bay",
+    "region": "HK Island",
+    "lat": 22.2701,
+    "lng": 114.1194,
+    "orientation": 270,
+    "nearestStations": [
+      "Green Island",
+      "Tsing Yi"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "沙灣",
+    "isBeach": true,
+    "placeId": "ChIJn6B9AcD_AzQRFA9S2yLhoF8",
+    "historicalWeight": 0.75,
+    "accessDifficulty": 3,
+    "roadTier": "remote",
+    "hikeGrade": "flat"
+  },
+  {
     "name": "Shek O Beach",
     "nameTc": "石澳泳灘",
     "region": "HK Island",
@@ -385,7 +353,7 @@
     "historicalWeight": 0.15,
     "accessDifficulty": 2,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "flat",
     "placeId": "ChIJzd2kYhkCBDQRFzzgkfsotmI",
     "debris": {
       "cleaningFrequency": "Many Times a Day",
@@ -488,9 +456,9 @@
       "Waglan Island"
     ],
     "historicalWeight": 0.15,
-    "accessDifficulty": 3,
+    "accessDifficulty": 1,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "flat",
     "placeId": "ChIJzd2kYhkCBDQRGkblQnyZ6UY",
     "debris": {
       "cleaningFrequency": "Many times a day",
@@ -501,7 +469,7 @@
   },
   {
     "name": "Waterfall Bay",
-    "nameTc": null,
+    "nameTc": "瀑布灣",
     "region": "HK Island",
     "lat": 22.2502814800511,
     "lng": 114.1349930765864,
@@ -566,9 +534,9 @@
       "Cheung Chau"
     ],
     "historicalWeight": 0.3,
-    "accessDifficulty": 3,
+    "accessDifficulty": 1,
     "roadTier": "ferry",
-    "hikeGrade": "rolling",
+    "hikeGrade": "flat",
     "placeId": "ChIJ37Sfht9UATQRp_toysE4AGI",
     "debris": {
       "cleaningFrequency": "Many times a day 每日多次",
@@ -576,6 +544,28 @@
       "difficultyNote": "Low (Age group: >8 years old) 低難度 (年齡: 8歲以上)",
       "coastalLength": "217m"
     }
+  },
+  {
+    "name": "Lo Tik Wan",
+    "region": "Lamma",
+    "lat": 22.2238,
+    "lng": 114.1264,
+    "orientation": 295,
+    "nearestStations": [
+      "Lamma Island",
+      "Cheung Chau"
+    ],
+    "exposure": 0.7,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "南丫島蘆荻灣",
+    "isBeach": true,
+    "placeId": "ChIJJXCT1ThVATQR98-pFJ5A93Q",
+    "historicalWeight": 0.75,
+    "accessDifficulty": 4,
+    "hikeMinutes": 25,
+    "roadTier": "ferry",
+    "hikeGrade": "rolling"
   },
   {
     "name": "Mo Tat Wan",
@@ -594,7 +584,7 @@
     "bayFactor": 0.24,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "Once a week 每星期一次",
@@ -604,7 +594,7 @@
     }
   },
   {
-    "name": "Shek Pai Wan, Lamma Island",
+    "name": "Shek Pai Wan",
     "nameTc": "石排灣",
     "region": "Lamma",
     "lat": 22.19780493449512,
@@ -620,7 +610,7 @@
     "bayFactor": 0.23,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "Once a week 每星期一次",
@@ -631,7 +621,7 @@
   },
   {
     "name": "Tai Wan To",
-    "nameTc": "大灣肚(電廠灣",
+    "nameTc": "大灣肚",
     "region": "Lamma",
     "lat": 22.22023104959077,
     "lng": 114.11508822406176,
@@ -646,7 +636,7 @@
     "bayFactor": 0.22,
     "historicalWeight": 0.4,
     "accessDifficulty": 2,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "Twice a week 每星期兩次",
@@ -654,6 +644,28 @@
       "difficultyNote": "Middle (Age group: >16 years old) 中難度 (年齡: 16歲以上)",
       "coastalLength": "430m"
     }
+  },
+  {
+    "name": "Cheung Sha Lan",
+    "region": "Lantau",
+    "lat": 22.2338,
+    "lng": 113.9514,
+    "orientation": 45,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "長沙欄",
+    "isBeach": true,
+    "placeId": "ChIJwcAh4b39AzQRUEkgRNFChfQ",
+    "historicalWeight": 0.95,
+    "accessDifficulty": 4,
+    "hikeMinutes": 30,
+    "roadTier": "ferry",
+    "hikeGrade": "rolling"
   },
   {
     "name": "Fan Lan Sai Wan",
@@ -734,7 +746,7 @@
     }
   },
   {
-    "name": "Lo Kei Wan, Lantau",
+    "name": "Lo Kei Wan",
     "nameTc": "籮箕灣",
     "region": "Lantau",
     "lat": 22.2113541364966,
@@ -787,6 +799,27 @@
     }
   },
   {
+    "name": "Mui Wo Beach",
+    "region": "Lantau",
+    "lat": 22.266,
+    "lng": 113.9947,
+    "orientation": 85,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Cheung Chau"
+    ],
+    "exposure": 0.45,
+    "bayFactor": 0.5,
+    "gazetted": false,
+    "nameTc": "梅窩泳灘",
+    "isBeach": true,
+    "placeId": "ChIJLwkOSCpWATQRCHHAbQ8xnXo",
+    "historicalWeight": 0.55,
+    "accessDifficulty": 1,
+    "roadTier": "ferry",
+    "hikeGrade": "flat"
+  },
+  {
     "name": "Nim Shue Wan",
     "nameTc": "稔樹灣",
     "region": "Lantau",
@@ -815,6 +848,28 @@
     }
   },
   {
+    "name": "Po Chu Tam",
+    "region": "Lantau",
+    "lat": 22.2576,
+    "lng": 113.8622,
+    "orientation": 255,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Green Island"
+    ],
+    "exposure": 0.65,
+    "bayFactor": 0.2,
+    "gazetted": false,
+    "nameTc": "大嶼山寶珠潭",
+    "isBeach": false,
+    "placeId": "ChIJnclTmM1YATQR-8s3MVMLXtI",
+    "historicalWeight": 0.95,
+    "accessDifficulty": 4,
+    "hikeMinutes": 25,
+    "roadTier": "remote",
+    "hikeGrade": "rolling"
+  },
+  {
     "name": "Po Yue Wan",
     "nameTc": "鯆魚灣",
     "region": "Lantau",
@@ -831,7 +886,7 @@
     "bayFactor": 0.26,
     "historicalWeight": 0.4,
     "accessDifficulty": 3,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "No",
@@ -868,13 +923,35 @@
     }
   },
   {
+    "name": "Sam Pak Wan",
+    "region": "Lantau",
+    "lat": 22.3095,
+    "lng": 114.0198,
+    "orientation": 30,
+    "nearestStations": [
+      "Chek Lap Kok",
+      "Peng Chau"
+    ],
+    "exposure": 0.35,
+    "bayFactor": 0.4,
+    "gazetted": false,
+    "nameTc": "大嶼山三白灣海灘",
+    "isBeach": true,
+    "placeId": "ChIJ6ygMvbT9AzQRfh1v9E73ECM",
+    "historicalWeight": 0.75,
+    "accessDifficulty": 4,
+    "hikeMinutes": 30,
+    "roadTier": "ferry",
+    "hikeGrade": "rolling"
+  },
+  {
     "name": "Sha Lo Wan",
     "nameTc": "沙螺灣",
     "region": "Lantau",
     "lat": 22.28969362105029,
     "lng": 113.90245994927682,
     "gazetted": false,
-    "isBeach": true,
+    "isBeach": false,
     "orientation": 183.3,
     "nearestStations": [
       "Cheung Chau Beach",
@@ -883,9 +960,9 @@
     "exposure": 0.83,
     "bayFactor": 0.1,
     "historicalWeight": 0.4,
-    "accessDifficulty": 3,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "accessDifficulty": 4,
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "No public transport. 沒有任何公共交通工具，需自行前往",
@@ -934,8 +1011,8 @@
     "bayFactor": 0.19,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "ferry",
+    "hikeGrade": "flat",
     "debris": {
       "cleaningFrequency": "Many times a day 每日多次",
       "transportNotes": "Ferry (Central to Mui Wo) 小輪(中環至梅窩)",
@@ -959,9 +1036,9 @@
     "exposure": 0.83,
     "bayFactor": 0.1,
     "historicalWeight": 0.4,
-    "accessDifficulty": 3,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "accessDifficulty": 4,
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "No public transport. 沒有任何公共交通工具，需自行前往",
@@ -1011,8 +1088,8 @@
     "bayFactor": 0.31,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "ferry",
+    "hikeGrade": "flat",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Ferry (Central to Discovery Bay) 小輪(中環至愉景灣)",
@@ -1089,9 +1166,9 @@
     "exposure": 0.75,
     "bayFactor": 0.17,
     "historicalWeight": 0.4,
-    "accessDifficulty": 3,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "accessDifficulty": 4,
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "5 times a week",
       "transportNotes": "No",
@@ -1116,8 +1193,8 @@
     "bayFactor": 0.0,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "note": "Cleaning frequency 清潔次數: No",
       "transportNotes": "No public transport. 沒有任何交通工具，需自行前往",
@@ -1125,99 +1202,24 @@
     }
   },
   {
-    "name": "Grass Island",
-    "nameTc": null,
-    "region": "North",
-    "lat": 22.46647423090657,
-    "lng": 114.35823712963611,
+    "name": "Peng Chau Tung Wan Beach",
+    "region": "Peng Chau",
+    "lat": 22.2851,
+    "lng": 114.0406,
+    "orientation": 90,
+    "nearestStations": [
+      "Peng Chau"
+    ],
+    "exposure": 0.6,
+    "bayFactor": 0.35,
     "gazetted": false,
+    "nameTc": "坪洲東灣沙灘",
     "isBeach": true,
-    "orientation": 90.0,
-    "nearestStations": [
-      "Sai Kung",
-      "Tap Mun"
-    ],
-    "exposure": 1.0,
-    "bayFactor": 0.0,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling"
-  },
-  {
-    "name": "Hoi Ha Wan Marine Park",
-    "nameTc": "海下灣海岸公園",
-    "region": "North",
-    "lat": 22.461879371310463,
-    "lng": 114.32735645771572,
-    "gazetted": false,
-    "isBeach": false,
-    "orientation": 90.0,
-    "nearestStations": [
-      "Sai Kung",
-      "Tap Mun"
-    ],
-    "exposure": 1.0,
-    "bayFactor": 0.0,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "3-6 times a week 每星期三至六次",
-      "transportNotes": "Take minibus no. 7 from Pak Tam Chung to Hoi Ha Tsuen 北 潭 涌 小 巴 7 號至 海 下 村 步 行 可 達 灣 仔 Take ferry from Wong Shek to Nam Fung Wan 黃 石 碼 頭 小 輪 前 往 南 風 灣",
-      "difficultyNote": "High (Age group: >18 years old) 高難度 (年齡: 18歲以上)"
-    }
-  },
-  {
-    "name": "Tung Ping Chau Marine Park",
-    "nameTc": null,
-    "region": "North",
-    "lat": 22.54517908571342,
-    "lng": 114.43479605019093,
-    "gazetted": false,
-    "isBeach": false,
-    "orientation": 90.0,
-    "nearestStations": [
-      "Sai Kung",
-      "Tap Mun"
-    ],
-    "exposure": 1.0,
-    "bayFactor": 0.0,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "3 times per week",
-      "transportNotes": "Take ferry at Ma Liu Shui Ferry Pier (near MTR University station) only available on Saturday, Sunday and Public Holidays 馬料水渡輪碼頭乘小輪 小輪只限於星期日及公眾假期提供服務",
-      "difficultyNote": "Middle (Age group: >16 years old) 中難度 (年齡: 16歲以上)"
-    }
-  },
-  {
-    "name": "Yan Chau Tong Marine Park",
-    "nameTc": "印洲塘海岸公園",
-    "region": "North",
-    "lat": 22.51592488033857,
-    "lng": 114.28961344063282,
-    "gazetted": false,
-    "isBeach": false,
-    "orientation": 90.0,
-    "nearestStations": [
-      "Sai Kung",
-      "Tap Mun"
-    ],
-    "exposure": 1.0,
-    "bayFactor": 0.0,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "3 times per week 一星期3次",
-      "transportNotes": "Take MTR to University Station (Exit B) and walk for 15 min to Ma Liu Shui Landing Steps No.3 for ferry service. *ferry service only available on Sunday and public holidays 乘搭港鐵東鐵綫到大學站，從B 出口步行15 分鐘至馬料水三號梯台乘搭渡輪 *渡輪只限於星期日及公眾假期提供服務",
-      "difficultyNote": "High (Age group: >18 years old) 高難度 (年齡: 18歲以上)"
-    }
+    "placeId": "ChIJ_fq4t3b9AzQRIDW4ns4NXhI",
+    "historicalWeight": 0.55,
+    "accessDifficulty": 2,
+    "roadTier": "ferry",
+    "hikeGrade": "flat"
   },
   {
     "name": "Bayside",
@@ -1262,13 +1264,35 @@
     "bayFactor": 0.42,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "difficultyNote": "High (Age group: >18 years old) 高難度 (年齡: 18歲以上)",
       "coastalLength": "~50m"
     }
+  },
+  {
+    "name": "Chek Keng Beach",
+    "region": "Sai Kung",
+    "lat": 22.4203,
+    "lng": 114.3513,
+    "orientation": 300,
+    "nearestStations": [
+      "Sai Kung",
+      "Tap Mun"
+    ],
+    "exposure": 0.5,
+    "bayFactor": 0.5,
+    "gazetted": false,
+    "nameTc": "赤徑",
+    "isBeach": true,
+    "placeId": "ChIJJ4ZK5TsQBDQRvGtIarXFcA4",
+    "historicalWeight": 0.55,
+    "accessDifficulty": 5,
+    "hikeMinutes": 90,
+    "roadTier": "remote",
+    "hikeGrade": "steep"
   },
   {
     "name": "Clear Water Bay First Beach",
@@ -1340,10 +1364,10 @@
       "Tap Mun"
     ],
     "historicalWeight": 0.95,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "steep",
     "hikeMinutes": 90,
-    "accessDifficulty": 3,
+    "accessDifficulty": 4,
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Ferry (Wong Shek/Ma Liu Shui to Chek Keng) and walk 1.5 hours 小輪 (黃石/馬料水至赤徑)，步行1.5小時",
@@ -1395,8 +1419,8 @@
     "bayFactor": 0.24,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Take taxi from Sai Kung to Chong Hing Water Sports Centre and walk 1.5hr 於西貢巿中心乘的士至創興水上活動中心，步行1.5小時",
@@ -1421,8 +1445,8 @@
     "bayFactor": 0.39,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "No public transport 沒有公共交通工具",
@@ -1457,26 +1481,6 @@
       "difficultyNote": "Middle (Age group: >16 years old) 中難度 (年齡: 16歲以上)",
       "coastalLength": "70m"
     }
-  },
-  {
-    "name": "Kwo Chau Islands, Ninepin Group",
-    "nameTc": "果洲灣",
-    "region": "Sai Kung",
-    "lat": 22.260187085067358,
-    "lng": 114.35143697262902,
-    "gazetted": false,
-    "isBeach": true,
-    "orientation": 136.7,
-    "nearestStations": [
-      "Tseung Kwan O",
-      "Sai Kung"
-    ],
-    "exposure": 0.75,
-    "bayFactor": 0.25,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 3,
-    "roadTier": "road",
-    "hikeGrade": "rolling"
   },
   {
     "name": "Little Palm",
@@ -1520,7 +1524,7 @@
       "Tap Mun"
     ],
     "historicalWeight": 0.3,
-    "roadTier": "road",
+    "roadTier": "remote",
     "hikeGrade": "steep",
     "hikeMinutes": 50,
     "accessDifficulty": 3,
@@ -1544,9 +1548,9 @@
     "exposure": 0.45,
     "bayFactor": 0.45,
     "historicalWeight": 0.4,
-    "accessDifficulty": 3,
+    "accessDifficulty": 4,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "4 times a week 每星期四次",
       "transportNotes": "Minibus 小巴: 56K",
@@ -1560,7 +1564,7 @@
     "lat": 22.309656118007002,
     "lng": 114.30090415495215,
     "gazetted": false,
-    "isBeach": true,
+    "isBeach": false,
     "orientation": 130,
     "exposure": 0.7,
     "bayFactor": 0.3,
@@ -1587,7 +1591,7 @@
     "lat": 22.35036183228341,
     "lng": 114.34815448526933,
     "gazetted": false,
-    "isBeach": true,
+    "isBeach": false,
     "orientation": 134.9,
     "nearestStations": [
       "Sai Kung",
@@ -1597,7 +1601,7 @@
     "bayFactor": 0.22,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
+    "roadTier": "remote",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "No",
@@ -1622,8 +1626,8 @@
     "bayFactor": 0.0,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "ferry",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Ferry (Wong Shek/Ma Liu Shui to Ko Lau Wan) and walk 1.5 hours 小輪 (黃石/馬料水至高流灣)，步行1.5小時",
@@ -1647,10 +1651,10 @@
       "Tap Mun"
     ],
     "historicalWeight": 0.5,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "hikeMinutes": 40,
-    "accessDifficulty": 3,
+    "accessDifficulty": 4,
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Take taxi from Sai Kung to Pak Lap Wan 於西貢巿中心乘的士至白臘灣",
@@ -1665,7 +1669,7 @@
     "lat": 22.376147007432337,
     "lng": 114.28719806688605,
     "gazetted": false,
-    "isBeach": true,
+    "isBeach": false,
     "orientation": 129.9,
     "nearestStations": [
       "Sai Kung",
@@ -1675,7 +1679,7 @@
     "bayFactor": 0.36,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "rolling",
     "debris": {
       "cleaningFrequency": "No",
@@ -1690,7 +1694,7 @@
     "lat": 22.340880317609493,
     "lng": 114.26600647042505,
     "gazetted": false,
-    "isBeach": true,
+    "isBeach": false,
     "orientation": 240,
     "exposure": 0.7,
     "bayFactor": 0.45,
@@ -1699,7 +1703,7 @@
     ],
     "historicalWeight": 0.75,
     "accessDifficulty": 4,
-    "roadTier": "road",
+    "roadTier": "remote",
     "hikeGrade": "steep",
     "placeId": "ChIJy2ENAEEEBDQRO1HL0EQb1G8",
     "hikeMinutes": 35,
@@ -1737,30 +1741,6 @@
     }
   },
   {
-    "name": "Siu Chung Lam Wan",
-    "nameTc": "小棕林灣",
-    "region": "Sai Kung",
-    "lat": 22.320189673294184,
-    "lng": 114.28578265942633,
-    "gazetted": false,
-    "isBeach": true,
-    "orientation": 157.2,
-    "nearestStations": [
-      "Sai Kung",
-      "Tseung Kwan O"
-    ],
-    "exposure": 0.68,
-    "bayFactor": 0.35,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 2,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "No",
-      "transportNotes": "Bus 巴士 91, 291R; Minibus 小巴 103, 103M"
-    }
-  },
-  {
     "name": "Tai Long Sai Wan",
     "nameTc": "大浪西灣",
     "region": "Sai Kung",
@@ -1778,7 +1758,7 @@
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Minibus 29R (Sai Kung to terminal station) and walk 1.5hr; 小巴 29R (西貢至總站) 再步行1.5小時",
@@ -1802,10 +1782,10 @@
       "Tap Mun"
     ],
     "historicalWeight": 0.95,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "steep",
     "hikeMinutes": 120,
-    "accessDifficulty": 3,
+    "accessDifficulty": 4,
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Ferry (Wong Shek/Ma Liu Shui to Chek Keng) and walk 1.5 hours 小輪 (黃石/馬料水至赤徑)，步行1.5小時",
@@ -1856,10 +1836,10 @@
       "Tap Mun"
     ],
     "historicalWeight": 0.95,
-    "roadTier": "road",
+    "roadTier": "ferry",
     "hikeGrade": "steep",
     "hikeMinutes": 150,
-    "accessDifficulty": 3,
+    "accessDifficulty": 4,
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "Ferry (Wong Shek/Ma Liu Shui to Chek Keng) and walk 2 hours 小輪 (黃石/馬料水至赤徑)，步行2小時",
@@ -1884,8 +1864,8 @@
     "bayFactor": 0.19,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "remote",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "No public transport 沒有公共交通工具",
@@ -1910,8 +1890,8 @@
     "bayFactor": 0.44,
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
+    "roadTier": "ferry",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "No",
       "transportNotes": "can hire boat from Sai Kung pier for $80/head. Or ferry from Sai Kung pier to golf course and walk. 西貢碼頭有舢板來回約$80一位. 有行山人士會從賽馬會滘西洲高爾夫的船前往，上岸後向南綑邊便可到達。 西貢碼頭有船到高爾夫球場，20分鐘一班，$60來回船費",
@@ -1937,7 +1917,7 @@
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "5 times per week 一星期5次",
       "transportNotes": "Bus 299, 89D, 40X, 85C, 87K; Minibus 807A",
@@ -1963,7 +1943,7 @@
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "4 times per week 一星期4次",
       "transportNotes": "Bus 75K",
@@ -1988,7 +1968,7 @@
     "historicalWeight": 0.4,
     "accessDifficulty": 4,
     "roadTier": "road",
-    "hikeGrade": "rolling",
+    "hikeGrade": "steep",
     "debris": {
       "cleaningFrequency": "once a month",
       "transportNotes": "Bus 巴士 74K; Minibus 小巴 20K",
@@ -2364,7 +2344,7 @@
     }
   },
   {
-    "name": "Lung Kwu Upper",
+    "name": "Lung Kwu Sheung Tan",
     "nameTc": "龍鼓上灘",
     "region": "Tuen Mun",
     "lat": 22.406002842756102,
@@ -2386,30 +2366,6 @@
       "transportNotes": "Bus 巴士 K52",
       "difficultyNote": "Middle (Age group: >16 years old) 中難度 (年齡: 16歲以上)",
       "coastalLength": "~1000m"
-    }
-  },
-  {
-    "name": "Shau Chau & Lung Kwu Chau Marine Park",
-    "nameTc": "沙洲及龍鼓洲海岸公園",
-    "region": "Tuen Mun",
-    "lat": 22.3450626862183,
-    "lng": 113.89016604458448,
-    "gazetted": false,
-    "isBeach": false,
-    "orientation": 282.4,
-    "nearestStations": [
-      "Tuen Mun"
-    ],
-    "exposure": 0.45,
-    "bayFactor": 0.42,
-    "historicalWeight": 0.4,
-    "accessDifficulty": 2,
-    "roadTier": "road",
-    "hikeGrade": "rolling",
-    "debris": {
-      "cleaningFrequency": "3 times a week 每星期三次",
-      "transportNotes": "No public transport. 沒有任何公共交通工具，需自行前往",
-      "difficultyNote": "High (Age group: >18 years old) 高難度 (年齡: 18歲以上)"
     }
   }
 ]

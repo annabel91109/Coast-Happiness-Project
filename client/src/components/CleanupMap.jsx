@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { MapContainer, CircleMarker, Popup } from "react-leaflet";
 import { useLang } from "../LangContext";
 import { T } from "../i18n";
 import CleanupCard from "./CleanupCard";
+import LangAwareTileLayer from "./LangAwareTileLayer";
 
 export default function CleanupMap({ cleanups, epdEvents, userId, onUpdate, onSelect }) {
   const { lang } = useLang();
@@ -26,10 +27,7 @@ export default function CleanupMap({ cleanups, epdEvents, userId, onUpdate, onSe
         style={{ width: "100%" }}
         className="h-[60vh] min-h-[300px] rounded-lg shadow-sm"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <LangAwareTileLayer />
         {[...byBeach.entries()].map(([beachName, { lat, lng, cleanups: beachCleanups }]) => (
           <CircleMarker
             key={beachName}

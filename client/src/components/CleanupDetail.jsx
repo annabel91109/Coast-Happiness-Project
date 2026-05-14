@@ -29,7 +29,7 @@ export default function CleanupDetail({ cleanup, userId, onUpdate, onClose }) {
       : { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }
   );
 
-  const durLabel = ct[`dur${cleanup.durationMinutes}`] || `${cleanup.durationMinutes} min`;
+  const durLabel = ct[`dur${cleanup.durationMinutes}`] || `${cleanup.durationMinutes} ${t.minutes}`;
 
   async function handleLeave() {
     setLoading(true);

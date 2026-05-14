@@ -162,7 +162,7 @@ export default function HostCleanupForm({ beaches, events = [], onCreated }) {
   function useMyLocation() {
     if (!navigator.geolocation) {
       setLocStatus("error");
-      setError("Geolocation not supported by this browser");
+      setError(t.errors.geolocationUnsupported);
       return;
     }
     setLocStatus("loading");
@@ -174,7 +174,7 @@ export default function HostCleanupForm({ beaches, events = [], onCreated }) {
       },
       (err) => {
         setLocStatus("error");
-        setError(`Location: ${err.message}`);
+        setError(`${t.errors.locationPrefix}: ${err.message}`);
       },
       { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
     );
@@ -195,7 +195,7 @@ export default function HostCleanupForm({ beaches, events = [], onCreated }) {
     e?.preventDefault();
     setError(null);
     if (!dateTime) {
-      setError(ct.dateTime + " required");
+      setError(`${ct.dateTime} ${t.errors.required}`);
       return;
     }
     const suggested = suggestBeaches(beaches || [], {
@@ -673,7 +673,7 @@ export default function HostCleanupForm({ beaches, events = [], onCreated }) {
                       </div>
                       <div className="mt-1 text-xs text-[#5a7d80]">
                         {t.regions[b.region] || b.region}
-                        {b._distKm > 0 && ` · ${wt.distance}: ${b._distKm.toFixed(1)} km`}
+                        {b._distKm > 0 && ` · ${wt.distance}: ${b._distKm.toFixed(1)} ${t.km}`}
                       </div>
                       <div className="mt-2 flex flex-wrap items-center gap-1.5">
                         {b.accessDifficulty != null && (

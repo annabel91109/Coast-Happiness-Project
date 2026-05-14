@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { MapContainer, CircleMarker, Popup } from "react-leaflet";
 import { useLang } from "../LangContext";
 import { T } from "../i18n";
 import recyclingPoints from "../data/recyclingPoints.json";
+import LangAwareTileLayer from "./LangAwareTileLayer";
 
 // All 18 districts get the same green pin — the dataset is uniform
 // (GREEN@COMMUNITY Recycling Stations). Distinguish per-site detail in
@@ -30,12 +31,7 @@ export default function RecyclingMap() {
         style={{ height: "65vh", width: "100%" }}
         className="rounded-lg shadow-sm"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-          subdomains="abcd"
-          maxZoom={19}
-        />
+        <LangAwareTileLayer />
         {recyclingPoints.map((p) => (
           <CircleMarker
             key={p.id}
